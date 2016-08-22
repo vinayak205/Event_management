@@ -39,16 +39,6 @@ class SecurityController extends Controller{
     public function securityCheckAction(){
     }
 
-
-    /**
-     * @Route("/testing", name="venue_test")
-     */
-    public function venueTestAction(){
-        return $this->render('default/index.html.twig');
-    }
-
-    
-
     /**
      * @Route("/register", name="register")
      */
