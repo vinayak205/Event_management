@@ -130,6 +130,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_details')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::detailsAction',));
             }
 
+            // events_pending
+            if ($pathinfo === '/events/pending') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::pendingListAction',  '_route' => 'events_pending',);
+            }
+
+            // events_approve
+            if (0 === strpos($pathinfo, '/events/approve') && preg_match('#^/events/approve/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_approve')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::approveAction',));
+            }
+
+            // events_reject
+            if (0 === strpos($pathinfo, '/events/reject') && preg_match('#^/events/reject/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_reject')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::rejectAction',));
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/login')) {

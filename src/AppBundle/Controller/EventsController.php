@@ -35,7 +35,7 @@ class EventsController extends Controller{
 
         $criteria = new \Doctrine\Common\Collections\Criteria();
         $criteria->where($criteria->expr()->gt('startDate', $now));
-        $criteria->andwhere($criteria->expr()->eq('status', 'pending'));
+        $criteria->andwhere($criteria->expr()->eq('status', 'approved'));
 
         $events = $em->matching($criteria);
 
@@ -145,6 +145,69 @@ class EventsController extends Controller{
 
         return $this->render('events/details.html.twig', array(
                 'event' => $event));
+    }
+
+    /**
+    * @Route("events/pending", name="events_pending")
+    */
+
+    public function pendingListAction(){
+        $em = $this->getDoctrine()
+            ->getRepository('AppBundle:Event');
+
+        $criteria = new \Doctrine\Common\Collections\Criteria();
+        $criteria->where($criteria->expr()->eq('status', 'pending'));
+
+        $events = $em->matching($criteria);
+
+        return $this->render('events/pending.html.twig', array(
+                'events' => $events
+            ));
+
+
+    }
+    
+    
+    /**
+    * @Route("events/approve/{id}", name="events_approve")
+    */
+
+    public function approveAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('AppBundle:Event')
+            ->find($id);
+        
+
+        $event->setStatus('approved');
+
+        $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Event approved'
+                );
+            return $this->redirectToRoute('events_pending');
+    }
+
+    /**
+    * @Route("events/reject/{id}", name="events_reject")
+    */
+
+    public function rejectAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('AppBundle:Event')
+            ->find($id);
+        
+
+        $event->setStatus('rejected');
+
+        $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Event Rejected'
+                );
+            return $this->redirectToRoute('events_pending');
     }
     
 }
