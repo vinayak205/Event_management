@@ -122,10 +122,12 @@ class VenueController extends Controller{
         $venue->setAddress($venue->getAddress());
 
         $form = $this->createFormBuilder($venue)
-            ->add('name', TextType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('description', TextareaType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('address', TextareaType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('save', SubmitType::class, array('label' => 'Update Venue', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')))
+            ->add('name', TextType::class, array('attr' => 
+            	array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('description', TextareaType::class, 
+            	array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('address', TextareaType::class, 
+            	array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
             ->getForm();
 
         $form -> handleRequest($request);
