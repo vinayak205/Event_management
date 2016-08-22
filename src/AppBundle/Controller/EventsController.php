@@ -35,6 +35,7 @@ class EventsController extends Controller{
 
         $criteria = new \Doctrine\Common\Collections\Criteria();
         $criteria->where($criteria->expr()->gt('startDate', $now));
+        $criteria->andwhere($criteria->expr()->eq('status', 'pending'));
 
         $events = $em->matching($criteria);
 
@@ -138,7 +139,12 @@ class EventsController extends Controller{
     */
 
     public function detailsAction($id){
-        return null;
+        $event = $this->getDoctrine()
+            ->getRepository('AppBundle:Event')
+            ->find($id);
+
+        return $this->render('events/details.html.twig', array(
+                'event' => $event));
     }
     
 }
