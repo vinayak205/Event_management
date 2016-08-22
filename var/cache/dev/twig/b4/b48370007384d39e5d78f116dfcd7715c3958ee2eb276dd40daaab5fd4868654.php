@@ -21,20 +21,20 @@ class __TwigTemplate_f0be3fddca9b5a293d5b7e2189367b33654b5cd4cfef7b9df64b9aede15
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_139e83c941af5403ced0d427b9e0a6754f7b2a67232f43fc5c4786a917bbb07c = $this->env->getExtension("native_profiler");
-        $__internal_139e83c941af5403ced0d427b9e0a6754f7b2a67232f43fc5c4786a917bbb07c->enter($__internal_139e83c941af5403ced0d427b9e0a6754f7b2a67232f43fc5c4786a917bbb07c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":venue:details.html.twig"));
+        $__internal_0c2be272e363f921035480d0adef01500d976bc23b22c57dab29ac305c0b8d1b = $this->env->getExtension("native_profiler");
+        $__internal_0c2be272e363f921035480d0adef01500d976bc23b22c57dab29ac305c0b8d1b->enter($__internal_0c2be272e363f921035480d0adef01500d976bc23b22c57dab29ac305c0b8d1b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":venue:details.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_139e83c941af5403ced0d427b9e0a6754f7b2a67232f43fc5c4786a917bbb07c->leave($__internal_139e83c941af5403ced0d427b9e0a6754f7b2a67232f43fc5c4786a917bbb07c_prof);
+        $__internal_0c2be272e363f921035480d0adef01500d976bc23b22c57dab29ac305c0b8d1b->leave($__internal_0c2be272e363f921035480d0adef01500d976bc23b22c57dab29ac305c0b8d1b_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_498e67b3ed1f33d520320d67e7e502c7c4551bd2ab532cbf56f57c9d0a8fd102 = $this->env->getExtension("native_profiler");
-        $__internal_498e67b3ed1f33d520320d67e7e502c7c4551bd2ab532cbf56f57c9d0a8fd102->enter($__internal_498e67b3ed1f33d520320d67e7e502c7c4551bd2ab532cbf56f57c9d0a8fd102_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_2a6468e5f219fafcc7355d8aba023e4efe415d762896bea49daf2ef5ea43bb58 = $this->env->getExtension("native_profiler");
+        $__internal_2a6468e5f219fafcc7355d8aba023e4efe415d762896bea49daf2ef5ea43bb58->enter($__internal_2a6468e5f219fafcc7355d8aba023e4efe415d762896bea49daf2ef5ea43bb58_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
         echo "\t<a class = \"btn btn-default\"href=\"/venue/list\"> Back to List</a>
@@ -55,7 +55,7 @@ class __TwigTemplate_f0be3fddca9b5a293d5b7e2189367b33654b5cd4cfef7b9df64b9aede15
 \t</li>
 ";
         
-        $__internal_498e67b3ed1f33d520320d67e7e502c7c4551bd2ab532cbf56f57c9d0a8fd102->leave($__internal_498e67b3ed1f33d520320d67e7e502c7c4551bd2ab532cbf56f57c9d0a8fd102_prof);
+        $__internal_2a6468e5f219fafcc7355d8aba023e4efe415d762896bea49daf2ef5ea43bb58->leave($__internal_2a6468e5f219fafcc7355d8aba023e4efe415d762896bea49daf2ef5ea43bb58_prof);
 
     }
 
