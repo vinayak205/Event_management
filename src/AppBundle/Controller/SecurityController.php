@@ -15,22 +15,35 @@ class SecurityController extends Controller{
      */
     public function loginAction(Request $request){
 
-        $authenticationUtils = $this->get('security.authentication_utils');
+        try{
+            $authenticationUtils = $this->get('security.authentication_utils');
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
+            // get the login error if there is one
+            $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+            // last username entered by the user
+            $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render(
-            'default/login.html.twig',
-            array(
-                // last username entered by the user
-                'last_username' => $lastUsername,
-                'error'         => $error,
-            )
-        );
+            return $this->render(
+                'default/login.html.twig',
+                array(
+                    // last username entered by the user
+                    'last_username' => $lastUsername,
+                    'error'         => $error,
+                )
+            );
+
+        }
+        catch(\Exception $e){
+            $this->addFlash(
+                'notice',
+                'Error: Login Failed!'
+            );
+            return $this->redirectToRoute('login');
+
+        }
+
+        
     }
 
 
@@ -45,33 +58,53 @@ class SecurityController extends Controller{
      * @Route("/register", name="register")
      */
     public function registerAction(Request $request){
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        try{
+            $user = new User();
+            $form = $this->createForm(UserType::class, $user);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
 
-            // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $this->get('security.password_encoder')
-                ->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-            $user->setUserRole('ROLE_USER');
+                //Encode the password
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
+                $user->setUserRole('ROLE_USER');
 
-            // 4) save the User!
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
+                $this->addFlash(
+                'notice',
+                'Registration successfull!'
+                );
+                return $this->redirectToRoute('login');
+            }
 
-            return $this->redirectToRoute('login');
+            return $this->render(
+                'default/register.html.twig',
+                array('form' => $form->createView())
+            );    
         }
 
-        return $this->render(
-            'default/register.html.twig',
-            array('form' => $form->createView())
-        );
+        catch(UniqueConstraintViolationException $e){
+            $this->addFlash(
+                'notice',
+                'Error: Cannot register!'
+            );
+            return $this->redirectToRoute('login');
+        }
+        catch(\Exception $e){
+            #$logger = $this->get('logger');
+            #$logger->error($e->getMessage());
+            $this->addFlash(
+                'notice',
+                'Error: Cannot register!'
+            );
+            return $this->redirectToRoute('login');
+        }
+        
     }    
 
     
