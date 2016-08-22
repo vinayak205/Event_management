@@ -114,22 +114,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testAction',  '_route' => 'test',);
         }
 
-        if (0 === strpos($pathinfo, '/login')) {
-            // login
-            if ($pathinfo === '/login') {
-                return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
-            }
+        // login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+        }
 
-            // login_check
-            if ($pathinfo === '/login_check') {
-                return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::securityCheckAction',  '_route' => 'login_check',);
-            }
+        // testing_sample
+        if ($pathinfo === '/abcd') {
+            return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::testingAction',  '_route' => 'testing_sample',);
+        }
 
+        // login_check
+        if ($pathinfo === '/login_check') {
+            return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::securityCheckAction',  '_route' => 'login_check',);
         }
 
         // register
         if ($pathinfo === '/register') {
             return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::registerAction',  '_route' => 'register',);
+        }
+
+        // venue_list
+        if ($pathinfo === '/venue/list') {
+            return array (  '_controller' => 'AppBundle\\Controller\\VenueController::listAction',  '_route' => 'venue_list',);
         }
 
         // logout
