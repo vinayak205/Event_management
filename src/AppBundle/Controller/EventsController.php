@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Venue;
 use AppBundle\Entity\Event;
+use AppBundle\Entity\EventUser;
 use AppBundle\Form\UserType;
 
 
@@ -318,10 +319,60 @@ class EventsController extends Controller{
 
     public function eventRegisterAction($id){
     	try{
-    		$this->addFlash(
-	            'notice',
-	            'Registered.'
+    		$user = $this->getUser();
+    		$event = $this->getDoctrine()
+	            ->getRepository('AppBundle:Event')
+	            ->find($id);
+    		if($user){
+    			$userRole = $user->getUserRole();
+    			if(strcmp($userRole, 'ROLE_USER') == 0){
+    				$em = $this->getDoctrine()
+	            		->getRepository('AppBundle:EventUser');
+
+	        		$criteria = new \Doctrine\Common\Collections\Criteria();
+	        		$criteria->where($criteria->expr()->eq('user', $user));
+	        		$criteria->andwhere($criteria->expr()->eq('event', $event));
+
+	        		$result = $em->matching($criteria);
+
+	        		if(!($result->isEmpty())){
+	        			$this->addFlash(
+	            			'notice',
+	            			'Already Registered!');
+	        		}
+	        		else{
+	        			$eventUser = new EventUser;
+	        			$eventUser->setUser($user);
+	        			$eventUser->setEvent($event);
+	        			$em = $this->getDoctrine()->getManager();
+	            		$em->persist($eventUser);
+	            		$em->flush();
+
+	            		$this->addFlash(
+	            			'notice',
+	            			'Registered!');
+
+	        		}
+
+
+    			}
+    			else{
+    				$this->addFlash(
+	            	'notice',
+	            	'Access Denied!'
 	         	);
+    			return $this->redirectToRoute('events_list');    				
+    			}	
+    		}
+    		else{
+				$this->addFlash(
+	            	'notice',
+	            	'Access Denied!'
+	         	);
+    			return $this->redirectToRoute('events_list');    			
+    		}
+
+    		
     		return $this->redirectToRoute('events_list');
     	}
     	catch(\Exception $e){
