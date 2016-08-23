@@ -99,6 +99,58 @@ class VenueController extends Controller{
 
         
     }
+
+    /**
+     * @Route("/venue/delete/{id}", name="venue_delete")
+     */
+    public function deleteAction($id){
+    	try{
+    		$em = $this->getDoctrine()->getManager();
+	        $venue = $em->getRepository('AppBundle:Venue')->find($id);
+
+	        $em->remove($venue);
+	        $em->flush();
+
+	        $this->addFlash(
+	                'notice',
+	                'Venue deleted'
+	            );
+	        return $this->redirectToRoute('venue_list');
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+                'notice',
+                'Error: Venue not deleted.'
+            );
+            return $this->redirectToRoute('venue_list');
+
+    	}
+        
+    }
+
+    /**
+     * @Route("/venue/details/{id}", name="venue_details")
+     */
+    public function detailAction($id){
+    	try{
+    		$venue = $this->getDoctrine()
+	            ->getRepository('AppBundle:Venue')
+	            ->find($id);
+
+	        return $this->render('venue/details.html.twig', array(
+	                'venue' => $venue));
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+                'notice',
+                'Error: Venue details cannot be displayed.'
+            );
+            return $this->redirectToRoute('venue_list');
+
+    	}
+        
+    }
+    
     
 
 }
