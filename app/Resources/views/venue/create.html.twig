@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h2 class="page-header">Add Venue</h2>
+	{{form_start(form)}}
+	{{form_widget(form)}}
+	<input type="submit" class="btn btn-success" value="Save" />
+	<a href="/" class="btn btn-danger">Cancel</a>	
+	{{form_end(form)}}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<a class = "btn btn-default"href="/venue/list"> Back to List</a>
+	<hr>
+	<h2 class="page-header">{{venue.name}}</h2>
+	<li class="list-group">
+		<ul class="list-group-itme">Description: {{venue.description}}</ul>
+		<ul class="list-group-itme">Address: {{venue.address}}</ul>
+	</li>
+{% endblock %}
