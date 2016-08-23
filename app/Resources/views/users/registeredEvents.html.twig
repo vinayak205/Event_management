@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	
+		<h2 class="page-header">Registered Events</h4>
+		<table class="table table-striped">
+		<thead>
+			<th>Event name</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Venue</th>
+		</thead>
+		<tbody>
+		{% for regEvent in regEvents %}
+			<tr>
+				<td>{{regEvent.event.name}}</td>
+				<td>{{regEvent.event.startDate|date('m/d/Y')}}</td>
+				<td>{{regEvent.event.endDate|date('m/d/Y')}}</td>
+				<td>{{regEvent.event.venue.name}}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	
+{% endblock %}

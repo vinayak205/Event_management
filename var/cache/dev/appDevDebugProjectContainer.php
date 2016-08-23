@@ -323,7 +323,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_AppService()
     {
-        $this->services['cache.app'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('Bkn9dxkhAc', '', (__DIR__.'/pools'));
+        $this->services['cache.app'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('fVIjmOmPh2', '', (__DIR__.'/pools'));
 
         if ($this->has('monolog.logger.cache')) {
             $instance->setLogger($this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
@@ -355,7 +355,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_SystemService()
     {
-        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('kj-q1rkQ8d', '', 'x+hLtCnI-6F1dF4F8KrQAA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('q0naEklD-H', '', 'j7kGWrUzNUUnzHv5a9bYBQ', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -373,8 +373,8 @@ class appDevDebugProjectContainer extends Container
         $b = new \Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer();
         $b->addPool($this->get('cache.app'));
         $b->addPool($this->get('cache.system'));
-        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('-63aJfaEyf', '', 'x+hLtCnI-6F1dF4F8KrQAA', (__DIR__.'/pools'), $a));
-        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('bycXCvVPaD', '', 'x+hLtCnI-6F1dF4F8KrQAA', (__DIR__.'/pools'), $a));
+        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('8dpz8QGnwC', '', 'j7kGWrUzNUUnzHv5a9bYBQ', (__DIR__.'/pools'), $a));
+        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('jVG-mLkRaU', '', 'j7kGWrUzNUUnzHv5a9bYBQ', (__DIR__.'/pools'), $a));
 
         return $this->services['cache_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer(array(0 => $b));
     }
@@ -2189,31 +2189,34 @@ class appDevDebugProjectContainer extends Container
 
         $q = new \Symfony\Component\HttpFoundation\RequestMatcher('^/events/*');
 
-        $r = new \Symfony\Component\Security\Http\AccessMap();
-        $r->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $r->add($i, array(0 => 'ROLE_ADMIN', 1 => 'ROLE_USER'), NULL);
-        $r->add($j, array(0 => 'ROLE_ADMIN', 1 => 'ROLE_USER'), NULL);
-        $r->add($k, array(0 => 'ROLE_ADMIN'), NULL);
-        $r->add($l, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $r->add($m, array(0 => 'ROLE_ADMIN'), NULL);
-        $r->add($n, array(0 => 'ROLE_USER'), NULL);
-        $r->add($o, array(0 => 'ROLE_ADMIN'), NULL);
-        $r->add($p, array(0 => 'ROLE_ADMIN'), NULL);
-        $r->add($q, array(0 => 'ROLE_ADMIN', 1 => 'ROLE_USER'), NULL);
+        $r = new \Symfony\Component\HttpFoundation\RequestMatcher('^/users/*');
 
-        $s = new \Symfony\Component\Security\Http\HttpUtils($e, $e);
+        $s = new \Symfony\Component\Security\Http\AccessMap();
+        $s->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($i, array(0 => 'ROLE_ADMIN', 1 => 'ROLE_USER'), NULL);
+        $s->add($j, array(0 => 'ROLE_ADMIN', 1 => 'ROLE_USER'), NULL);
+        $s->add($k, array(0 => 'ROLE_ADMIN'), NULL);
+        $s->add($l, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($m, array(0 => 'ROLE_ADMIN'), NULL);
+        $s->add($n, array(0 => 'ROLE_USER'), NULL);
+        $s->add($o, array(0 => 'ROLE_ADMIN'), NULL);
+        $s->add($p, array(0 => 'ROLE_ADMIN'), NULL);
+        $s->add($q, array(0 => 'ROLE_ADMIN', 1 => 'ROLE_USER'), NULL);
+        $s->add($r, array(0 => 'ROLE_USER'), NULL);
 
-        $t = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $s, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($s, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => '/logout'));
-        $t->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $t = new \Symfony\Component\Security\Http\HttpUtils($e, $e);
 
-        $u = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($s, array());
-        $u->setOptions(array('login_path' => 'login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
-        $u->setProviderKey('main');
+        $u = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $t, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($t, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => '/logout'));
+        $u->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
 
-        $v = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $s, array(), $a);
-        $v->setOptions(array('login_path' => 'login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+        $v = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($t, array());
+        $v->setOptions(array('login_path' => 'login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $v->setProviderKey('main');
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($r, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.our_db_provider')), 'main', $a, $c, $d), 2 => $t, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $s, 'main', $u, $v, array('check_path' => 'login', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57bbfe057341f8.04634489', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('debug.security.access.decision_manager'), $r, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $s, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $s, 'login', false), NULL, NULL, $a, false));
+        $w = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $t, array(), $a);
+        $w->setOptions(array('login_path' => 'login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($s, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.our_db_provider')), 'main', $a, $c, $d), 2 => $u, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $t, 'main', $v, $w, array('check_path' => 'login', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57bc459112aed3.41869500', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('debug.security.access.decision_manager'), $s, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $t, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $t, 'login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -3519,7 +3522,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.our_db_provider'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57bbfe057341f8.04634489')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.our_db_provider'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57bc459112aed3.41869500')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 

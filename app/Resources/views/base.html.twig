@@ -36,6 +36,7 @@
 
             {% if app.user %}
               {% if app.user.userRole == 'ROLE_USER' %}
+                <li><a href="/users/regevents">Registered Events</a></li>
                 <li><a href="/venue/list">List Venues</a></li>
                 <li><a href="/events/list">List Events</a></li>
                 <li><a href="/events/add">Add Event</a></li>
