@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h2 class="page-header">Events</h2>
+	<table class="table table-striped">
+		<tbody>
+			{% for event in events %}
+			<tr>
+				<td>
+				<div class="card">
+  
+  					<div class="card-block">
+    					<h4 class="card-title">{{event.name}}</h4>
+    					<p class="card-text">Description: {{event.shortDescription}}</p>
+    					<p class="card-text">Start Date: {{event.startDate|date("m/d/Y")}}</p>
+    					<a href="/events/details/{{event.id}}" class="btn btn-success">View</a>
+  					</div>
+				</div>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
