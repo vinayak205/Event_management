@@ -114,6 +114,60 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testAction',  '_route' => 'test',);
         }
 
+        if (0 === strpos($pathinfo, '/events')) {
+            // events_list
+            if ($pathinfo === '/events/list') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::listAction',  '_route' => 'events_list',);
+            }
+
+            // events_add
+            if ($pathinfo === '/events/add') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::createAction',  '_route' => 'events_add',);
+            }
+
+            // events_details
+            if (0 === strpos($pathinfo, '/events/details') && preg_match('#^/events/details/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_details')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::detailsAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/events/pending')) {
+                // events__pending_details
+                if (0 === strpos($pathinfo, '/events/pending/details') && preg_match('#^/events/pending/details/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'events__pending_details')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::pendingDetailsAction',));
+                }
+
+                // events_pending
+                if ($pathinfo === '/events/pending') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\EventsController::pendingListAction',  '_route' => 'events_pending',);
+                }
+
+            }
+
+            // events_approve
+            if (0 === strpos($pathinfo, '/events/approve') && preg_match('#^/events/approve/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_approve')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::approveAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/events/re')) {
+                // events_reject
+                if (0 === strpos($pathinfo, '/events/reject') && preg_match('#^/events/reject/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_reject')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::rejectAction',));
+                }
+
+                // events_register
+                if (0 === strpos($pathinfo, '/events/register') && preg_match('#^/events/register/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_register')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::eventRegisterAction',));
+                }
+
+            }
+
+            // events_unregister
+            if (0 === strpos($pathinfo, '/events/unregister') && preg_match('#^/events/unregister/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_unregister')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::unregisterAction',));
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/login')) {
             // login
             if ($pathinfo === '/login') {
@@ -130,6 +184,37 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // register
         if ($pathinfo === '/register') {
             return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::registerAction',  '_route' => 'register',);
+        }
+
+        if (0 === strpos($pathinfo, '/venue')) {
+            // venue_list
+            if ($pathinfo === '/venue/list') {
+                return array (  '_controller' => 'AppBundle\\Controller\\VenueController::listAction',  '_route' => 'venue_list',);
+            }
+
+            // venue_add
+            if ($pathinfo === '/venue/add') {
+                return array (  '_controller' => 'AppBundle\\Controller\\VenueController::createAction',  '_route' => 'venue_add',);
+            }
+
+            if (0 === strpos($pathinfo, '/venue/de')) {
+                // venue_delete
+                if (0 === strpos($pathinfo, '/venue/delete') && preg_match('#^/venue/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'venue_delete')), array (  '_controller' => 'AppBundle\\Controller\\VenueController::deleteAction',));
+                }
+
+                // venue_details
+                if (0 === strpos($pathinfo, '/venue/details') && preg_match('#^/venue/details/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'venue_details')), array (  '_controller' => 'AppBundle\\Controller\\VenueController::detailAction',));
+                }
+
+            }
+
+            // venue_edit
+            if (0 === strpos($pathinfo, '/venue/edit') && preg_match('#^/venue/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venue_edit')), array (  '_controller' => 'AppBundle\\Controller\\VenueController::editAction',));
+            }
+
         }
 
         // logout

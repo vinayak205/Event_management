@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h2 class="page-header">Add Event</h2>
+	{{form_start(form)}}
+	{{form_widget(form)}}
+	<button type="sbumit" class="btn btn-primary">Create Event</button>
+	<a href="/events/list" class="btn btn-danger">Cancel</a>	
+	{{form_end(form)}}
+{% endblock %}
