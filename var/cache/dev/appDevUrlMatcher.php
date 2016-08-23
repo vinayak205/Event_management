@@ -148,9 +148,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_approve')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::approveAction',));
             }
 
-            // events_reject
-            if (0 === strpos($pathinfo, '/events/reject') && preg_match('#^/events/reject/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_reject')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::rejectAction',));
+            if (0 === strpos($pathinfo, '/events/re')) {
+                // events_reject
+                if (0 === strpos($pathinfo, '/events/reject') && preg_match('#^/events/reject/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_reject')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::rejectAction',));
+                }
+
+                // events_register
+                if (0 === strpos($pathinfo, '/events/register') && preg_match('#^/events/register/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_register')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::eventRegisterAction',));
+                }
+
+            }
+
+            // events_unregister
+            if (0 === strpos($pathinfo, '/events/unregister') && preg_match('#^/events/unregister/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'events_unregister')), array (  '_controller' => 'AppBundle\\Controller\\EventsController::unregisterAction',));
             }
 
         }

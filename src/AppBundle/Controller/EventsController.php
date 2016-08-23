@@ -38,12 +38,19 @@ class EventsController extends Controller{
 
 	        $events = $em->matching($criteria);
 
+	        $user = $this->getUser();
+	        $userRole = "anon";
+	        if($user){
+	        	$userRole = $user -> getUserRole();
+	        }
+
 	        #$events = $this->getDoctrine()
 	         #   ->getRepository('AppBundle:Event')
 	         #   ->findAll();
 
 	        return $this->render('events/list.html.twig', array(
-	                'events' => $events
+	                'events' => $events,
+	                'role' => $userRole
 	            ));
 
     	}
@@ -305,6 +312,51 @@ class EventsController extends Controller{
     }
     
 
+    /**
+    * @Route("events/register/{id}", name="events_register")
+    */
+
+    public function eventRegisterAction($id){
+    	try{
+    		$this->addFlash(
+	            'notice',
+	            'Registered.'
+	         	);
+    		return $this->redirectToRoute('events_list');
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+	            'notice',
+	            'Error: Not registered.'
+	             );
+	        return $this->redirectToRoute('events_list');
+
+    	}
+        
+    }
+
+    /**
+    * @Route("events/unregister/{id}", name="events_unregister")
+    */
+
+    public function unregisterAction($id){
+    	try{
+    		$this->addFlash(
+	            'notice',
+	            'Unregistered.'
+	             );
+    		return $this->redirectToRoute('events_list');
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+	            'notice',
+	            'Error: Not able to unregister.'
+	             );
+	        return $this->redirectToRoute('events_list');
+
+    	}
+        
+    }
 
 
 
