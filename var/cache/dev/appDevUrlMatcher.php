@@ -114,6 +114,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testAction',  '_route' => 'test',);
         }
 
+        if (0 === strpos($pathinfo, '/events')) {
+            // events_list
+            if ($pathinfo === '/events/list') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::listAction',  '_route' => 'events_list',);
+            }
+
+            // events_add
+            if ($pathinfo === '/events/add') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::createAction',  '_route' => 'events_add',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/login')) {
             // login
             if ($pathinfo === '/login') {

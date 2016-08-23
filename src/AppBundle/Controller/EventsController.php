@@ -154,5 +154,126 @@ class EventsController extends Controller{
     }
 
 
+    /**
+    * @Route("events/details/{id}", name="events_details")
+    */
+
+    public function detailsAction($id){
+
+    	try{
+    		$event = $this->getDoctrine()
+	            ->getRepository('AppBundle:Event')
+	            ->find($id);
+
+	        return $this->render('events/details.html.twig', array(
+	                'event' => $event));
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+                'notice',
+                'Error: Details cannot be displayed!'
+            );
+            return $this->redirectToRoute('events_list');
+    	}
+        
+    }
+
+    /**
+    * @Route("events/pending", name="events_pending")
+    */
+
+    public function pendingListAction(){
+    	try{
+
+    		$em = $this->getDoctrine()
+	            ->getRepository('AppBundle:Event');
+
+	        $criteria = new \Doctrine\Common\Collections\Criteria();
+	        $criteria->where($criteria->expr()->eq('status', 'pending'));
+
+	        $events = $em->matching($criteria);
+
+	        return $this->render('events/pending.html.twig', array(
+	                'events' => $events
+	            ));
+
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+                'notice',
+                'Error: Events cannot be displayed!'
+            );
+            return $this->redirectToRoute('homepage');
+    	}
+        
+    }
+
+    /**
+    * @Route("events/approve/{id}", name="events_approve")
+    */
+
+    public function approveAction($id){
+    	try{
+    		$em = $this->getDoctrine()->getManager();
+	        $event = $em->getRepository('AppBundle:Event')
+	            ->find($id);
+	        
+
+	        $event->setStatus('approved');
+
+	        $em->flush();
+
+	        $this->addFlash(
+	            'notice',
+	            'Event approved'
+	             );
+	        return $this->redirectToRoute('events_pending');
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+	            'notice',
+	            'Error: Event not approved'
+	             );
+	        return $this->redirectToRoute('events_pending');
+    	}
+        
+    }
+
+    /**
+    * @Route("events/reject/{id}", name="events_reject")
+    */
+
+    public function rejectAction($id){
+    	try{
+    		$em = $this->getDoctrine()->getManager();
+	        $event = $em->getRepository('AppBundle:Event')
+	            ->find($id);
+	        
+
+	        $event->setStatus('rejected');
+
+	        $em->flush();
+
+	        $this->addFlash(
+                'notice',
+                'Event Rejected'
+                );
+            return $this->redirectToRoute('events_pending');
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+	            'notice',
+	            'Error: Event not rejected'
+	             );
+	        return $this->redirectToRoute('events_pending');
+
+    	}
+        
+    }
+    
+
+
+
+
 }
     
