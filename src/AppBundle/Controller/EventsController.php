@@ -64,6 +64,48 @@ class EventsController extends Controller{
     	}
         
     }
+    /**
+    *	@param : datetime $start data, datetime $endDate, venue $venue
+	*
+    *	checks if the given venue is available for the requested time period
+	*
+    *	@return boolean
+    */
+    public function checkVenueAvailability($startDate, $endDate, $venue){
+
+    	try{
+    		$em = $this->getDoctrine()
+                ->getRepository('AppBundle:Event');
+
+            $criteria = new \Doctrine\Common\Collections\Criteria();
+            $criteria->where($criteria->expr()->eq('venue', $venue));
+
+            $events = $em->matching($criteria);
+            $flag = true;
+            foreach($events as $event){
+            	if($event->getStartDate() > $endDate){
+            		$flag = true;
+            	}
+            	elseif($event->getEndDate() < $startDate) {
+            		$flag = true;
+            	}
+            	else{
+            		$flag = false;
+            		break;
+            	}
+            }
+            if($flag){
+            	return true;
+            }
+            else{
+            	return false;
+            }
+    	}
+    	catch(\Exception $e){
+    		return false;
+    	}
+
+    }
 
     /**
      * @Route("/events/add", name="events_add")
@@ -129,9 +171,18 @@ class EventsController extends Controller{
 	                'Error: Start date has to be before the end date!'
 	                );
 	            
-	                return $this->redirectToRoute('events_list');
+	                return $this->redirectToRoute('events_add');
 	            }
-
+	            $available = $this->checkVenueAvailability($start_date, $end_date, $ven);
+	            if($available == false){
+	            	$this->addFlash(
+	                'notice',
+	                'Venue not available. Please choose some other location.'
+	                );
+	            	
+	            	return $this->redirectToRoute('events_add');
+	            }
+	            
 	            $event->setName($name);
 	            $event->setCategory($category);
 	            $event->setDescription($description);

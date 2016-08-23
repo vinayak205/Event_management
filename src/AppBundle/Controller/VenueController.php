@@ -144,8 +144,21 @@ class VenueController extends Controller{
 	            ->getRepository('AppBundle:Venue')
 	            ->find($id);
 
+            //Added to display the events booked at the event
+
+            $em = $this->getDoctrine()
+                ->getRepository('AppBundle:Event');
+
+            $criteria = new \Doctrine\Common\Collections\Criteria();
+            $criteria->where($criteria->expr()->eq('venue', $venue));
+
+            $events = $em->matching($criteria);
+
+            //End block
+
 	        return $this->render('venue/details.html.twig', array(
-	                'venue' => $venue));
+	                'venue' => $venue,
+                    'events' => $events));
     	}
     	catch(\Exception $e){
     		$this->addFlash(

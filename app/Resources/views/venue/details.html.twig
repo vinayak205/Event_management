@@ -3,8 +3,28 @@
 	<a class = "btn btn-default"href="/venue/list"> Back to List</a>
 	<hr>
 	<h2 class="page-header">{{venue.name}}</h2>
-	<li class="list-group">
-		<ul class="list-group-itme">Description: {{venue.description}}</ul>
-		<ul class="list-group-itme">Address: {{venue.address}}</ul>
-	</li>
+	<ul class="list-group">
+		<li class="list-group-item">Description: {{venue.description}}</li>
+		<li class="list-group-item">Address: {{venue.address}}</li>
+	</ul>
+	<div class="container">
+		<h4>Booked Events</h4>
+		<table class="table table-striped">
+		<thead>
+			<th>Event name</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+		{% for event in events %}
+			<tr>
+				<td>{{event.name}}</td>
+				<td>{{event.startDate|date('m/d/Y')}}</td>
+				<td>{{event.endDate|date('m/d/Y')}}</td>
+				<td>{{event.status}}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</div>
 {% endblock %}
