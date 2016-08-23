@@ -392,10 +392,63 @@ class EventsController extends Controller{
 
     public function unregisterAction($id){
     	try{
-    		$this->addFlash(
-	            'notice',
-	            'Unregistered.'
-	             );
+    		$user = $this->getUser();
+    		$event = $this->getDoctrine()
+	            ->getRepository('AppBundle:Event')
+	            ->find($id);
+    		if($user){
+    			$userRole = $user->getUserRole();
+    			if(strcmp($userRole, 'ROLE_USER') == 0){
+    				$em = $this->getDoctrine()
+	            		->getRepository('AppBundle:EventUser');
+
+	        		$criteria = new \Doctrine\Common\Collections\Criteria();
+	        		$criteria->where($criteria->expr()->eq('user', $user));
+	        		$criteria->andwhere($criteria->expr()->eq('event', $event));
+
+	        		$result = $em->matching($criteria);
+
+	        		if($result->isEmpty()){
+	        			$this->addFlash(
+	            			'notice',
+	            			'You are not registered for this event.');
+	        		}
+	        		else{
+	        			$objId = "";
+	        			foreach($result as $x){
+	        				$objId = $x->getId();
+	        			}
+	        			$em = $this->getDoctrine()->getManager();
+	        			$eventUserObj = $em->getRepository('AppBundle:EventUser')->find($objId);
+
+	        			$em->remove($eventUserObj);
+	        			$em->flush();
+
+	            		$this->addFlash(
+	            			'notice',
+	            			'Unregistered');
+
+	        		}
+
+
+    			}
+    			else{
+    				$this->addFlash(
+	            	'notice',
+	            	'Access Denied!'
+	         	);
+    			return $this->redirectToRoute('events_list');    				
+    			}	
+    		}
+    		else{
+				$this->addFlash(
+	            	'notice',
+	            	'Access Denied!'
+	         	);
+    			return $this->redirectToRoute('events_list');    			
+    		}
+
+    		
     		return $this->redirectToRoute('events_list');
     	}
     	catch(\Exception $e){
