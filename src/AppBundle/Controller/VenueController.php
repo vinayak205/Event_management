@@ -115,6 +115,29 @@ class VenueController extends Controller{
     		$em = $this->getDoctrine()->getManager();
 	        $venue = $em->getRepository('AppBundle:Venue')->find($id);
 
+            //delete associated events
+            $eventRepo = $em->getRepository('AppBundle:Event');
+            $eventUserRepo = $em->getRepository('AppBundle:EventUser');
+            $criteria = new \Doctrine\Common\Collections\Criteria();
+            $criteria->where($criteria->expr()->eq('venue', $venue));
+
+            $events = $eventRepo->matching($criteria);
+
+            foreach ($events as $event) {
+                $criteria->where($criteria->expr()->eq('event', $event));
+                $registeredEvents = $eventUserRepo->matching($criteria);
+                foreach ($registeredEvents as $reg) {
+                    $em->remove($reg);
+                    $em->flush();
+                }
+                $em->remove($event);
+                $em->flush();
+
+            }
+            //
+
+
+
 	        $em->remove($venue);
 	        $em->flush();
 
@@ -127,7 +150,7 @@ class VenueController extends Controller{
     	catch(\Exception $e){
     		$this->addFlash(
                 'notice',
-                'Error: Venue not deleted.'
+                $e->getMessage()
             );
             return $this->redirectToRoute('venue_list');
 
