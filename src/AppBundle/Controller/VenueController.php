@@ -26,11 +26,18 @@ class VenueController extends Controller{
     public function listAction(){
     	try{
     		$venues = $this->getDoctrine()
-            ->getRepository('AppBundle:Venue')
-            ->findAll();
+            	->getRepository('AppBundle:Venue')
+            	->findAll();
+
+            $user = $this->getUser();
+            $userRole = 'ROLE_ADMIN';
+            if($user){
+            	$userRole = $user->getUserRole();
+            }
 
         	return $this->render('venue/list.html.twig', array(
-                'venues' => $venues
+                'venues' => $venues,
+                'role' => $userRole
             ));
     	}
     	catch(\Exception $e){

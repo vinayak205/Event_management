@@ -132,6 +132,37 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::registerAction',  '_route' => 'register',);
         }
 
+        if (0 === strpos($pathinfo, '/venue')) {
+            // venue_list
+            if ($pathinfo === '/venue/list') {
+                return array (  '_controller' => 'AppBundle\\Controller\\VenueController::listAction',  '_route' => 'venue_list',);
+            }
+
+            // venue_add
+            if ($pathinfo === '/venue/add') {
+                return array (  '_controller' => 'AppBundle\\Controller\\VenueController::createAction',  '_route' => 'venue_add',);
+            }
+
+            if (0 === strpos($pathinfo, '/venue/de')) {
+                // venue_delete
+                if (0 === strpos($pathinfo, '/venue/delete') && preg_match('#^/venue/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'venue_delete')), array (  '_controller' => 'AppBundle\\Controller\\VenueController::deleteAction',));
+                }
+
+                // venue_details
+                if (0 === strpos($pathinfo, '/venue/details') && preg_match('#^/venue/details/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'venue_details')), array (  '_controller' => 'AppBundle\\Controller\\VenueController::detailAction',));
+                }
+
+            }
+
+            // venue_edit
+            if (0 === strpos($pathinfo, '/venue/edit') && preg_match('#^/venue/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venue_edit')), array (  '_controller' => 'AppBundle\\Controller\\VenueController::editAction',));
+            }
+
+        }
+
         // logout
         if ($pathinfo === '/logout') {
             return array('_route' => 'logout');

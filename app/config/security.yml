@@ -24,3 +24,6 @@ security:
                 path: /logout
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/venue/list, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/venue/details/*, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/venue/*, roles: [ROLE_ADMIN] }

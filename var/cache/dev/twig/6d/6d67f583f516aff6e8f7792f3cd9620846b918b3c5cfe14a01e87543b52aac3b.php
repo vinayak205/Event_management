@@ -1,6 +1,6 @@
 <?php
 
-/* :default:login.html.twig */
+/* default/login.html.twig */
 class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c4fd93 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("base.html.twig", ":default:login.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "default/login.html.twig", 1);
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
@@ -21,20 +21,20 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a3ed8873229d26f8a0aff1591b6378e90bc6c6305f8c9685646738df707acbb9 = $this->env->getExtension("native_profiler");
-        $__internal_a3ed8873229d26f8a0aff1591b6378e90bc6c6305f8c9685646738df707acbb9->enter($__internal_a3ed8873229d26f8a0aff1591b6378e90bc6c6305f8c9685646738df707acbb9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":default:login.html.twig"));
+        $__internal_34de98120189988cbd806873c9a49241ef12a8ab6ffc9cb7e277cdeeb94d846c = $this->env->getExtension("native_profiler");
+        $__internal_34de98120189988cbd806873c9a49241ef12a8ab6ffc9cb7e277cdeeb94d846c->enter($__internal_34de98120189988cbd806873c9a49241ef12a8ab6ffc9cb7e277cdeeb94d846c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_a3ed8873229d26f8a0aff1591b6378e90bc6c6305f8c9685646738df707acbb9->leave($__internal_a3ed8873229d26f8a0aff1591b6378e90bc6c6305f8c9685646738df707acbb9_prof);
+        $__internal_34de98120189988cbd806873c9a49241ef12a8ab6ffc9cb7e277cdeeb94d846c->leave($__internal_34de98120189988cbd806873c9a49241ef12a8ab6ffc9cb7e277cdeeb94d846c_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a447d24dae1b61094db757442109ffe96ba14f68f1954c36c82a5d4dc12964ff = $this->env->getExtension("native_profiler");
-        $__internal_a447d24dae1b61094db757442109ffe96ba14f68f1954c36c82a5d4dc12964ff->enter($__internal_a447d24dae1b61094db757442109ffe96ba14f68f1954c36c82a5d4dc12964ff_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_92b7bc01eba6b01f5bf5f24aba6ce9ee056351ce7812bb73cc99c22840e7b437 = $this->env->getExtension("native_profiler");
+        $__internal_92b7bc01eba6b01f5bf5f24aba6ce9ee056351ce7812bb73cc99c22840e7b437->enter($__internal_92b7bc01eba6b01f5bf5f24aba6ce9ee056351ce7812bb73cc99c22840e7b437_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
         echo "
@@ -62,20 +62,17 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
     <label for=\"password\">Password:</label>
     <input type=\"password\" id=\"password\" name=\"_password\" />
 
-    ";
-        // line 20
-        echo "
     <button type=\"submit\">login</button>
 </form>
 ";
         
-        $__internal_a447d24dae1b61094db757442109ffe96ba14f68f1954c36c82a5d4dc12964ff->leave($__internal_a447d24dae1b61094db757442109ffe96ba14f68f1954c36c82a5d4dc12964ff_prof);
+        $__internal_92b7bc01eba6b01f5bf5f24aba6ce9ee056351ce7812bb73cc99c22840e7b437->leave($__internal_92b7bc01eba6b01f5bf5f24aba6ce9ee056351ce7812bb73cc99c22840e7b437_prof);
 
     }
 
     public function getTemplateName()
     {
-        return ":default:login.html.twig";
+        return "default/login.html.twig";
     }
 
     public function isTraitable()
@@ -85,7 +82,7 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
 
     public function getDebugInfo()
     {
-        return array (  67 => 20,  59 => 10,  54 => 8,  51 => 7,  45 => 5,  43 => 4,  40 => 3,  34 => 2,  11 => 1,);
+        return array (  59 => 10,  54 => 8,  51 => 7,  45 => 5,  43 => 4,  40 => 3,  34 => 2,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -101,12 +98,6 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
 /* */
 /*     <label for="password">Password:</label>*/
 /*     <input type="password" id="password" name="_password" />*/
-/* */
-/*     {#*/
-/*         If you want to control the URL the user*/
-/*         is redirected to on success (more details below)*/
-/*         <input type="hidden" name="_target_path" value="/account" />*/
-/*     #}*/
 /* */
 /*     <button type="submit">login</button>*/
 /* </form>*/
