@@ -76,12 +76,20 @@ class EventsController extends Controller{
 	            
 	        }
 
+	        $categoryArray = array(
+	        	'Music' => 'Music',
+	        	'Sports' => 'Sports',
+	        	'Meeting' => 'Meeting',
+	        	'class' => 'class'
+
+	        	);
+
 	        $event = new Event;
 	        $form = $this->createFormBuilder($event)
 	            ->add('name', TextType::class, array('attr' => 
 	                array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-	            ->add('category', TextType::class, 
-	                array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+	            ->add('category', ChoiceType::class, array('choices' => $categoryArray, 
+	                'attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
 	            ->add('short_description', TextType::class, 
 	                array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
 	            ->add('description', TextareaType::class, 
@@ -144,9 +152,10 @@ class EventsController extends Controller{
 	            ));
     	}
     	catch(\Exception $e){
+    		$message = $e->getMessage();
     		$this->addFlash(
                 'notice',
-                'Error: Event not added!'
+                "$message"
             );
             return $this->redirectToRoute('events_list');
 
@@ -189,7 +198,7 @@ class EventsController extends Controller{
 	            ->getRepository('AppBundle:Event')
 	            ->find($id);
 
-	        return $this->render('events/details.html.twig', array(
+	        return $this->render('events/pendingdetails.html.twig', array(
 	                'event' => $event));
     	}
     	catch(\Exception $e){
