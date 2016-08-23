@@ -33,3 +33,4 @@ security:
         - { path: ^/events/approve/*, roles: [ROLE_ADMIN] }
         - { path: ^/events/reject/*, roles: [ROLE_ADMIN] }
         - { path: ^/events/*, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/users/*, roles: [ROLE_USER] }

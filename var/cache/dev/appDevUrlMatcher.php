@@ -186,6 +186,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::registerAction',  '_route' => 'register',);
         }
 
+        // users_registered_events
+        if ($pathinfo === '/users/regevents') {
+            return array (  '_controller' => 'AppBundle\\Controller\\UsersController::listRegisteredEventsAction',  '_route' => 'users_registered_events',);
+        }
+
         if (0 === strpos($pathinfo, '/venue')) {
             // venue_list
             if ($pathinfo === '/venue/list') {

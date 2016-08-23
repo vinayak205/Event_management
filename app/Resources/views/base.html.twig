@@ -33,17 +33,30 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            
-            <li><a href="/register">Register</a></li>
-            <li><a href="/venue/add">Add Venue</a></li>
-            <li><a href="/venue/list">List Venues</a></li>
-            <li><a href="/events/list">List Events</a></li>
-            <li><a href="/events/add">Add Event</a></li>
-            <li><a href="/events/pending">Pending Events</a></li>
+
+            {% if app.user %}
+              {% if app.user.userRole == 'ROLE_USER' %}
+                <li><a href="/users/regevents">Registered Events</a></li>
+                <li><a href="/venue/list">List Venues</a></li>
+                <li><a href="/events/list">List Events</a></li>
+                <li><a href="/events/add">Add Event</a></li>
+              {% elseif app.user.userRole == 'ROLE_ADMIN' %}
+                <li><a href="/venue/add">Add Venue</a></li>
+                <li><a href="/venue/list">List Venues</a></li>
+                <li><a href="/events/list">List Events</a></li>
+                <li><a href="/events/pending">Pending Events</a></li>
+              {% endif %}
+            {% else %}
+              <li><a href="/register">Register</a></li>
+            {% endif %}
             
           </ul>
           <ul class = "nav pull-right">
+            {% if app.user %}
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
             <li><a href="/login">Login</a></li>
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
