@@ -150,6 +150,72 @@ class VenueController extends Controller{
     	}
         
     }
+
+    /**
+     * @Route("/venue/edit/{id}", name="venue_edit")
+     */
+    public function editAction($id, Request $request){
+
+    	try{
+
+
+    		$venue = $this->getDoctrine()
+	            ->getRepository('AppBundle:Venue')
+	            ->find($id);
+
+	        $venue->setName($venue->getName());
+	        
+	        $venue->setDescription($venue->getDescription());
+	        $venue->setAddress($venue->getAddress());
+
+	        $form = $this->createFormBuilder($venue)
+	            ->add('name', TextType::class, array('attr' => 
+	            	array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+	            ->add('description', TextareaType::class, 
+	            	array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+	            ->add('address', TextareaType::class, 
+	            	array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+	            ->getForm();
+
+	        $form -> handleRequest($request);
+
+	        if($form -> isSubmitted() && $form -> isValid()){
+	            $name = $form['name']->getData();
+	            $description = $form['description']->getData();
+	            $address = $form['address']->getData();
+
+	            $em = $this->getDoctrine()->getManager();
+	            $venue = $em->getRepository('AppBundle:Venue')->find($id);
+
+	            $venue->setName($name);
+	            $venue->setDescription($description);
+	            $venue->setAddress($address);
+
+	            $em->flush();
+
+	            $this->addFlash(
+	                'notice',
+	                'Venue Updated'
+	                );
+	            return $this->redirectToRoute('venue_list');
+
+	        }
+
+	        return $this->render('venue/edit.html.twig', array(
+	                'venue' => $venue,
+	                'form' => $form->createView()
+	                ));
+
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+                'notice',
+                'Error: Venue details cannot be edited.'
+            );
+            return $this->redirectToRoute('venue_list');
+    	}
+
+    }
     
     
 
