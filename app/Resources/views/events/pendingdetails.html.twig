@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<a class = "btn btn-default "href="/events/pending"> Back to List</a>
+	<hr>
+	<h2 class="page-header">{{event.name}}</h2>
+	<li class="list-group">
+		<ul class="list-group-item">Category: {{event.category}}</ul>
+		<ul class="list-group-item">Description: {{event.description}}</ul>
+		<ul class="list-group-item">Start Date: {{event.startDate|date('m/d/Y')}}</ul>
+		<ul class="list-group-item">End Date: {{event.endDate|date('m/d/Y')}}</ul>
+		<ul class="list-group-item">Host: {{event.host}}</ul>
+	</li>
+{% endblock %}

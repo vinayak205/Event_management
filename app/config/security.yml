@@ -27,3 +27,9 @@ security:
         - { path: ^/venue/list, roles: [ROLE_ADMIN, ROLE_USER] }
         - { path: ^/venue/details/*, roles: [ROLE_ADMIN, ROLE_USER] }
         - { path: ^/venue/*, roles: [ROLE_ADMIN] }
+        - { path: ^/events/list, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/events/pending/*, roles: [ROLE_ADMIN] }
+        - { path: ^/events/add, roles: [ROLE_USER] }
+        - { path: ^/events/approve/*, roles: [ROLE_ADMIN] }
+        - { path: ^/events/reject/*, roles: [ROLE_ADMIN] }
+        - { path: ^/events/*, roles: [ROLE_ADMIN, ROLE_USER] }

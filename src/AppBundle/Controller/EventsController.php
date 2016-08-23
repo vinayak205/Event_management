@@ -179,6 +179,30 @@ class EventsController extends Controller{
     }
 
     /**
+    * @Route("events/pending/details/{id}", name="events__pending_details")
+    */
+
+    public function pendingDetailsAction($id){
+
+    	try{
+    		$event = $this->getDoctrine()
+	            ->getRepository('AppBundle:Event')
+	            ->find($id);
+
+	        return $this->render('events/details.html.twig', array(
+	                'event' => $event));
+    	}
+    	catch(\Exception $e){
+    		$this->addFlash(
+                'notice',
+                'Error: Details cannot be displayed!'
+            );
+            return $this->redirectToRoute('pending_list');
+    	}
+        
+    }
+    
+    /**
     * @Route("events/pending", name="events_pending")
     */
 
