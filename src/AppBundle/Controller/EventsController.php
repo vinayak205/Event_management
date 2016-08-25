@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class EventsController extends Controller{
 
@@ -75,9 +76,9 @@ class EventsController extends Controller{
     /**
     *
 	*
-    *	checks if the given venue is available for the requested time period
+    *	fetehes the events the logged in user has registered for.
 	*
-    *	@return boolean
+    *	@return array of event ids.
     */
 
 
@@ -154,7 +155,7 @@ class EventsController extends Controller{
 
 	        $venueNames = array();
 	        
-
+	        $user = $this->getUser();
 	        foreach ($venues as $venue) {
 	            $temp = $venue -> getName();
 	            $venueNames["$temp"] = $venue;
@@ -187,6 +188,7 @@ class EventsController extends Controller{
 	                array('attr' => array('class' => 'formcontrol', 'style' => 'margin-bottom:15px')))
 	            ->add('end_date', DateTimeType::class, 
 	                array('attr' => array('class' => 'formcontrol', 'style' => 'margin-bottom:15px')))
+	            ->add('image', FileType::class, array('label' => 'Image for the todo'))
 	            ->getForm();
 	        $form -> handleRequest($request);
 	        if($form -> isSubmitted() && $form -> isValid()){
@@ -199,6 +201,12 @@ class EventsController extends Controller{
 	            $host = $form['host']->getData();
 	            $short_description = $form['short_description']->getData();
 	            $status = "pending";
+	            $file = $event->getImage();
+	            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            	$file->move(
+                	$this->getParameter('event_image_directory'),
+                	$fileName
+            	);
 
 	            if($end_date <= $start_date){
 	                $this->addFlash(
@@ -227,6 +235,8 @@ class EventsController extends Controller{
 	            $event->setHost($host);
 	            $event->setStatus($status);
 	            $event->setShortDescription($short_description);
+	            $event->setImage($fileName);
+	            $event->setOrganizer($user);
 
 	            $em = $this->getDoctrine()->getManager();
 	            $em->persist($event);
@@ -350,10 +360,18 @@ class EventsController extends Controller{
 
 	        $em->flush();
 
+	        $eventUser = new EventUser;
+	        $user = $event->getOrganizer();
+	       	$eventUser->setUser($user);
+	       	$eventUser->setEvent($event);
+	       	
+	        $em->persist($eventUser);
+	        $em->flush();
+
 	        $this->addFlash(
 	            'notice',
 	            'Event approved'
-	             );
+	        );
 	        return $this->redirectToRoute('events_pending');
     	}
     	catch(\Exception $e){

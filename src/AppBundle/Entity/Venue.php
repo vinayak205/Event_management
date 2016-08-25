@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Venue
@@ -41,6 +42,15 @@ class Venue
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
+
+    /**
+     * 
+     *
+     * @ORM\Column(name="image", type="string")
+     * @Assert\NotBlank(message="Please, upload the image as a JPG file.")
+     * 
+     */
+    private $image;
 
 
     /**
@@ -124,5 +134,30 @@ class Venue
     {
         return $this->address;
     }
+
+    /**
+     * Set Image
+     *
+     * @param string $image
+     *
+     * @return event
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
 }
 

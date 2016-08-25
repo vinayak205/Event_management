@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event
@@ -84,7 +85,26 @@ class Event
      * @ORM\JoinColumn(name="venue_id", referencedColumnName = "id")
      * 
      */
-    private $venue;    
+    private $venue;
+
+    /**
+     * 
+     *
+     * @ORM\Column(name="image", type="string")
+     * @Assert\NotBlank(message="Please, upload the image as a JPG file.")
+     * 
+     */
+    private $image;
+
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="organizer_id", referencedColumnName = "id")
+     * 
+     */
+    private $organizer;
+
+
 
 
     /**
@@ -308,6 +328,54 @@ class Event
     public function getHost()
     {
         return $this->host;
+    }
+
+    /**
+     * Set Image
+     *
+     * @param string $image
+     *
+     * @return event
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set Organizer
+     *
+     * @param User organizer
+     *
+     * @return event
+     */
+    public function setOrganizer($organizer)
+    {
+        $this->organizer = $organizer;
+
+        return $this;
+    }
+
+    /**
+     * Get Organizer
+     *
+     * @return User
+     */
+    public function getOrganizer()
+    {
+        return $this->organizer;
     }
 
 }

@@ -15,7 +15,9 @@
     					{% if role == 'ROLE_USER' %}
     					<a href="/events/details/{{event.id}}" class="btn btn-success">View</a>
     						{% if event.id in regEvents %}
-    							<a href="/events/unregister/{{event.id}}" class="btn btn-danger">UnRegister</a>
+    							{% if app.user.id != event.organizer.id %}
+    								<a href="/events/unregister/{{event.id}}" class="btn btn-danger">UnRegister</a>
+    							{% endif %}
     						{% else %}
     							<a href="/events/register/{{event.id}}" class="btn btn-primary">Register</a>
     						{% endif %}

@@ -64,10 +64,10 @@ class Venue extends \AppBundle\Entity\Venue implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'address'];
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'address', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'image'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'address'];
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'address', '' . "\0" . 'AppBundle\\Entity\\Venue' . "\0" . 'image'];
     }
 
     /**
@@ -252,6 +252,28 @@ class Venue extends \AppBundle\Entity\Venue implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress', []);
 
         return parent::getAddress();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImage($image)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage', [$image]);
+
+        return parent::setImage($image);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getImage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage', []);
+
+        return parent::getImage();
     }
 
 }

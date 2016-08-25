@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 
@@ -65,6 +66,7 @@ class VenueController extends Controller{
 	            	array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
 	            ->add('address', TextareaType::class, array('attr' => 
 	            		array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+                ->add('image', FileType::class, array('label' => 'Image for the todo'))
 	            ->getForm();
 
 	        $form -> handleRequest($request);
@@ -74,9 +76,19 @@ class VenueController extends Controller{
 	            $description = $form['description']->getData();
 	            $address = $form['address']->getData();
 
+                $file = $venue->getImage();
+
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('venue_image_directory'),
+                    $fileName
+                );
+
+
 	            $venue->setName($name);
 	            $venue->setDescription($description);
 	            $venue->setAddress($address);
+                $venue->setImage($fileName);
 
 	            $em = $this->getDoctrine()->getManager();
 	            $em->persist($venue);
