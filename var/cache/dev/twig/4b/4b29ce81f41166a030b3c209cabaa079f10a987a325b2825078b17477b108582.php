@@ -21,53 +21,101 @@ class __TwigTemplate_7aa3f5779f75a8f57a674d51c043ff565c602edb1768d38f8f24ecfef27
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5d95a4b891bf2a4bba52634b7b6b2b0cbc8a88987af994a2b479c3c43fbe72cc = $this->env->getExtension("native_profiler");
-        $__internal_5d95a4b891bf2a4bba52634b7b6b2b0cbc8a88987af994a2b479c3c43fbe72cc->enter($__internal_5d95a4b891bf2a4bba52634b7b6b2b0cbc8a88987af994a2b479c3c43fbe72cc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "events/details.html.twig"));
+        $__internal_d17bed57d5802d0ddd66c63b5c89f5f0bbe8d9e0af494061f37dda8eed3b23c9 = $this->env->getExtension("native_profiler");
+        $__internal_d17bed57d5802d0ddd66c63b5c89f5f0bbe8d9e0af494061f37dda8eed3b23c9->enter($__internal_d17bed57d5802d0ddd66c63b5c89f5f0bbe8d9e0af494061f37dda8eed3b23c9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "events/details.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5d95a4b891bf2a4bba52634b7b6b2b0cbc8a88987af994a2b479c3c43fbe72cc->leave($__internal_5d95a4b891bf2a4bba52634b7b6b2b0cbc8a88987af994a2b479c3c43fbe72cc_prof);
+        $__internal_d17bed57d5802d0ddd66c63b5c89f5f0bbe8d9e0af494061f37dda8eed3b23c9->leave($__internal_d17bed57d5802d0ddd66c63b5c89f5f0bbe8d9e0af494061f37dda8eed3b23c9_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_7850ef93810436eb6a397a455c46c9c30ceff64d58b18c0bd15e5de32f7215cb = $this->env->getExtension("native_profiler");
-        $__internal_7850ef93810436eb6a397a455c46c9c30ceff64d58b18c0bd15e5de32f7215cb->enter($__internal_7850ef93810436eb6a397a455c46c9c30ceff64d58b18c0bd15e5de32f7215cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_0f1691f2b8bf8709ccc2eb142cda47a12a5438f1783346c023d2dbc7f8bf1cce = $this->env->getExtension("native_profiler");
+        $__internal_0f1691f2b8bf8709ccc2eb142cda47a12a5438f1783346c023d2dbc7f8bf1cce->enter($__internal_0f1691f2b8bf8709ccc2eb142cda47a12a5438f1783346c023d2dbc7f8bf1cce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
-        echo "\t<a class = \"btn btn-default \"href=\"/events/list\"> Back to List</a>
-\t<hr>
-\t<h2 class=\"page-header\">";
-        // line 5
+        echo "
+<a class = \"btn btn-default\"href=\"/events/list\"> Back to List</a>
+<hr>
+
+<div class=\"row\">
+
+          \t <div class=\"col-md-12\">
+
+                <div class=\"thumbnail\">
+                    <img class=\"img-responsive\" src=\"";
+        // line 12
+        echo twig_escape_filter($this->env, ($this->env->getExtension('asset')->getAssetUrl("asset/eventimages/") . $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "image", array())), "html", null, true);
+        echo "\" alt=\"\">
+                    <div class=\"caption-full\">
+                        
+                        <h3>";
+        // line 15
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "name", array()), "html", null, true);
-        echo "</h2>
-\t<ul class=\"list-group\">
-\t\t<li class=\"list-group-item\">Category: ";
-        // line 7
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "category", array()), "html", null, true);
-        echo "</li>
-\t\t<li class=\"list-group-item\">Description: ";
-        // line 8
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "description", array()), "html", null, true);
-        echo "</li>
-\t\t<li class=\"list-group-item\">Start Date: ";
-        // line 9
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "startDate", array()), "m/d/Y"), "html", null, true);
-        echo "</li>
-\t\t<li class=\"list-group-item\">End Date: ";
-        // line 10
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "endDate", array()), "m/d/Y"), "html", null, true);
-        echo "</li>
-\t\t<li class=\"list-group-item\">Host: ";
-        // line 11
+        echo "</h3>
+                        <h5>Start Time: ";
+        // line 16
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "startDate", array()), "Y-m-d H:i"), "html", null, true);
+        echo "</h5>
+                        <h5>End Time: ";
+        // line 17
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "endDate", array()), "Y-m-d H:i"), "html", null, true);
+        echo "</h5>
+                        <h5>Host: ";
+        // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "host", array()), "html", null, true);
-        echo "</ul>
-\t</ul>
+        echo "</h5>
+                        <h5>Organizer: ";
+        // line 19
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "organizer", array()), "username", array()), "html", null, true);
+        echo "</h5>
+                        <h5>Category: ";
+        // line 20
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "category", array()), "html", null, true);
+        echo "</h5>
+                        <br>
+                        <p>";
+        // line 22
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "description", array()), "html", null, true);
+        echo "</p>
+                        <h3>Venue Details: </h3>
+                        <div class=\"thumbnail\">
+                    \t\t<img class=\"img-responsive\" src=\"";
+        // line 25
+        echo twig_escape_filter($this->env, ($this->env->getExtension('asset')->getAssetUrl("asset/venueimages/") . $this->getAttribute($this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "venue", array()), "image", array())), "html", null, true);
+        echo "\" alt=\"\">
+\t                    \t<div class=\"caption-full\">
+\t                        
+\t                        \t<h3>";
+        // line 28
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "venue", array()), "name", array()), "html", null, true);
+        echo "</h3>
+\t                        \t<h5>Address: ";
+        // line 29
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "venue", array()), "address", array()), "html", null, true);
+        echo "</h5>
+\t                        \t<p>";
+        // line 30
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["event"]) ? $context["event"] : $this->getContext($context, "event")), "venue", array()), "description", array()), "html", null, true);
+        echo "</p>
+\t                        \t<br>
+\t                        \t
+\t                        \t
+\t                    \t</div>
+\t                    
+\t                \t</div>
+                    </div>
+                    
+                </div>
+             </div>
+</div>   
+
 ";
         
-        $__internal_7850ef93810436eb6a397a455c46c9c30ceff64d58b18c0bd15e5de32f7215cb->leave($__internal_7850ef93810436eb6a397a455c46c9c30ceff64d58b18c0bd15e5de32f7215cb_prof);
+        $__internal_0f1691f2b8bf8709ccc2eb142cda47a12a5438f1783346c023d2dbc7f8bf1cce->leave($__internal_0f1691f2b8bf8709ccc2eb142cda47a12a5438f1783346c023d2dbc7f8bf1cce_prof);
 
     }
 
@@ -83,20 +131,49 @@ class __TwigTemplate_7aa3f5779f75a8f57a674d51c043ff565c602edb1768d38f8f24ecfef27
 
     public function getDebugInfo()
     {
-        return array (  65 => 11,  61 => 10,  57 => 9,  53 => 8,  49 => 7,  44 => 5,  40 => 3,  34 => 2,  11 => 1,);
+        return array (  102 => 30,  98 => 29,  94 => 28,  88 => 25,  82 => 22,  77 => 20,  73 => 19,  69 => 18,  65 => 17,  61 => 16,  57 => 15,  51 => 12,  40 => 3,  34 => 2,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* {% block body %}*/
-/* 	<a class = "btn btn-default "href="/events/list"> Back to List</a>*/
-/* 	<hr>*/
-/* 	<h2 class="page-header">{{event.name}}</h2>*/
-/* 	<ul class="list-group">*/
-/* 		<li class="list-group-item">Category: {{event.category}}</li>*/
-/* 		<li class="list-group-item">Description: {{event.description}}</li>*/
-/* 		<li class="list-group-item">Start Date: {{event.startDate|date('m/d/Y')}}</li>*/
-/* 		<li class="list-group-item">End Date: {{event.endDate|date('m/d/Y')}}</li>*/
-/* 		<li class="list-group-item">Host: {{event.host}}</ul>*/
-/* 	</ul>*/
-/* {% endblock %}*/
 /* */
+/* <a class = "btn btn-default"href="/events/list"> Back to List</a>*/
+/* <hr>*/
+/* */
+/* <div class="row">*/
+/* */
+/*           	 <div class="col-md-12">*/
+/* */
+/*                 <div class="thumbnail">*/
+/*                     <img class="img-responsive" src="{{asset('asset/eventimages/')~event.image }}" alt="">*/
+/*                     <div class="caption-full">*/
+/*                         */
+/*                         <h3>{{event.name}}</h3>*/
+/*                         <h5>Start Time: {{event.startDate|date('Y-m-d H:i')}}</h5>*/
+/*                         <h5>End Time: {{event.endDate|date('Y-m-d H:i')}}</h5>*/
+/*                         <h5>Host: {{event.host}}</h5>*/
+/*                         <h5>Organizer: {{event.organizer.username}}</h5>*/
+/*                         <h5>Category: {{event.category}}</h5>*/
+/*                         <br>*/
+/*                         <p>{{event.description}}</p>*/
+/*                         <h3>Venue Details: </h3>*/
+/*                         <div class="thumbnail">*/
+/*                     		<img class="img-responsive" src="{{asset('asset/venueimages/')~event.venue.image }}" alt="">*/
+/* 	                    	<div class="caption-full">*/
+/* 	                        */
+/* 	                        	<h3>{{event.venue.name}}</h3>*/
+/* 	                        	<h5>Address: {{event.venue.address}}</h5>*/
+/* 	                        	<p>{{event.venue.description}}</p>*/
+/* 	                        	<br>*/
+/* 	                        	*/
+/* 	                        	*/
+/* 	                    	</div>*/
+/* 	                    */
+/* 	                	</div>*/
+/*                     </div>*/
+/*                     */
+/*                 </div>*/
+/*              </div>*/
+/* </div>   */
+/* */
+/* {% endblock %}*/

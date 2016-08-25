@@ -284,7 +284,7 @@ class EventsController extends Controller{
     	catch(\Exception $e){
     		$this->addFlash(
                 'notice',
-                'Error: Details cannot be displayed!'
+                $e->getMessage()
             );
             return $this->redirectToRoute('events_list');
     	}

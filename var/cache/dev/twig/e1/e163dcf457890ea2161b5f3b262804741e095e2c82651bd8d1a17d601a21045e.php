@@ -21,20 +21,20 @@ class __TwigTemplate_aacbefd8bec15c4c7985cc68d08ec506c3dc843e2d0575fd73bb70181e9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_36ba31bf753ba636dd89fa2c3f64ffe27d386b08717589023c6de03c1ca7eee2 = $this->env->getExtension("native_profiler");
-        $__internal_36ba31bf753ba636dd89fa2c3f64ffe27d386b08717589023c6de03c1ca7eee2->enter($__internal_36ba31bf753ba636dd89fa2c3f64ffe27d386b08717589023c6de03c1ca7eee2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "venue/list.html.twig"));
+        $__internal_7a46a7e2fc4aaa794217810abe67b7e057021638181bccd2863536b7ba99ea4b = $this->env->getExtension("native_profiler");
+        $__internal_7a46a7e2fc4aaa794217810abe67b7e057021638181bccd2863536b7ba99ea4b->enter($__internal_7a46a7e2fc4aaa794217810abe67b7e057021638181bccd2863536b7ba99ea4b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "venue/list.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_36ba31bf753ba636dd89fa2c3f64ffe27d386b08717589023c6de03c1ca7eee2->leave($__internal_36ba31bf753ba636dd89fa2c3f64ffe27d386b08717589023c6de03c1ca7eee2_prof);
+        $__internal_7a46a7e2fc4aaa794217810abe67b7e057021638181bccd2863536b7ba99ea4b->leave($__internal_7a46a7e2fc4aaa794217810abe67b7e057021638181bccd2863536b7ba99ea4b_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_5bb660625c678d8548d1684add9dbde9b0629e083b9d120424a6649d4373bc61 = $this->env->getExtension("native_profiler");
-        $__internal_5bb660625c678d8548d1684add9dbde9b0629e083b9d120424a6649d4373bc61->enter($__internal_5bb660625c678d8548d1684add9dbde9b0629e083b9d120424a6649d4373bc61_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_ecc54280b53d69a31b2f13d5b0a072fc926602563c6cf616010b1d6073a9c4d1 = $this->env->getExtension("native_profiler");
+        $__internal_ecc54280b53d69a31b2f13d5b0a072fc926602563c6cf616010b1d6073a9c4d1->enter($__internal_ecc54280b53d69a31b2f13d5b0a072fc926602563c6cf616010b1d6073a9c4d1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
         echo "\t<h2 class=\"page-header\">Venues</h2>
@@ -47,43 +47,44 @@ class __TwigTemplate_aacbefd8bec15c4c7985cc68d08ec506c3dc843e2d0575fd73bb70181e9
         foreach ($context['_seq'] as $context["_key"] => $context["venue"]) {
             // line 7
             echo "\t\t\t<tr>
+\t\t\t\t
 \t\t\t\t<td>
 \t\t\t\t<div class=\"card\">
   
   \t\t\t\t\t<div class=\"card-block\">
     \t\t\t\t\t<h4 class=\"card-title\">";
-            // line 12
+            // line 13
             echo twig_escape_filter($this->env, $this->getAttribute($context["venue"], "name", array()), "html", null, true);
             echo "</h4>
     \t\t\t\t\t<p class=\"card-text\">Address: ";
-            // line 13
+            // line 14
             echo twig_escape_filter($this->env, $this->getAttribute($context["venue"], "address", array()), "html", null, true);
             echo "</p>
     \t\t\t\t\t";
-            // line 14
+            // line 15
             if (((isset($context["role"]) ? $context["role"] : $this->getContext($context, "role")) == "ROLE_ADMIN")) {
-                // line 15
+                // line 16
                 echo "    \t\t\t\t\t<a href=\"/venue/details/";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["venue"], "id", array()), "html", null, true);
                 echo "\" class=\"btn btn-success\">View</a>
 \t\t\t\t\t\t<a href=\"/venue/edit/";
-                // line 16
+                // line 17
                 echo twig_escape_filter($this->env, $this->getAttribute($context["venue"], "id", array()), "html", null, true);
                 echo "\" class=\"btn btn-default\">Edit</a>
 \t\t\t\t\t\t<a href=\"/venue/delete/";
-                // line 17
+                // line 18
                 echo twig_escape_filter($this->env, $this->getAttribute($context["venue"], "id", array()), "html", null, true);
                 echo "\" class=\"btn btn-danger\" onclick=\"return confirm('Are you sure? All events associated with the venue will also be deleted!!')\">Delete</a>
 \t\t\t\t\t\t";
-            } elseif ((            // line 18
+            } elseif ((            // line 19
 (isset($context["role"]) ? $context["role"] : $this->getContext($context, "role")) == "ROLE_USER")) {
-                // line 19
+                // line 20
                 echo "\t\t\t\t\t\t<a href=\"/venue/details/";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["venue"], "id", array()), "html", null, true);
                 echo "\" class=\"btn btn-success\">View</a>
 \t\t\t\t\t\t";
             }
-            // line 21
+            // line 22
             echo "  \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t\t</td>
@@ -93,12 +94,12 @@ class __TwigTemplate_aacbefd8bec15c4c7985cc68d08ec506c3dc843e2d0575fd73bb70181e9
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['venue'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 26
+        // line 27
         echo "\t\t</tbody>
 \t</table>
 ";
         
-        $__internal_5bb660625c678d8548d1684add9dbde9b0629e083b9d120424a6649d4373bc61->leave($__internal_5bb660625c678d8548d1684add9dbde9b0629e083b9d120424a6649d4373bc61_prof);
+        $__internal_ecc54280b53d69a31b2f13d5b0a072fc926602563c6cf616010b1d6073a9c4d1->leave($__internal_ecc54280b53d69a31b2f13d5b0a072fc926602563c6cf616010b1d6073a9c4d1_prof);
 
     }
 
@@ -114,7 +115,7 @@ class __TwigTemplate_aacbefd8bec15c4c7985cc68d08ec506c3dc843e2d0575fd73bb70181e9
 
     public function getDebugInfo()
     {
-        return array (  97 => 26,  87 => 21,  81 => 19,  79 => 18,  75 => 17,  71 => 16,  66 => 15,  64 => 14,  60 => 13,  56 => 12,  49 => 7,  45 => 6,  40 => 3,  34 => 2,  11 => 1,);
+        return array (  98 => 27,  88 => 22,  82 => 20,  80 => 19,  76 => 18,  72 => 17,  67 => 16,  65 => 15,  61 => 14,  57 => 13,  49 => 7,  45 => 6,  40 => 3,  34 => 2,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -124,6 +125,7 @@ class __TwigTemplate_aacbefd8bec15c4c7985cc68d08ec506c3dc843e2d0575fd73bb70181e9
 /* 		<tbody>*/
 /* 			{% for venue in venues %}*/
 /* 			<tr>*/
+/* 				*/
 /* 				<td>*/
 /* 				<div class="card">*/
 /*   */

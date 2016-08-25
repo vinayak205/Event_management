@@ -10,6 +10,7 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
         // line 1
         $this->parent = $this->loadTemplate("base.html.twig", "default/login.html.twig", 1);
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -21,52 +22,73 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9d2c9047812def6d2d2f9cf87b8bcd5deac1b485432a503f62045a1f1324d8a6 = $this->env->getExtension("native_profiler");
-        $__internal_9d2c9047812def6d2d2f9cf87b8bcd5deac1b485432a503f62045a1f1324d8a6->enter($__internal_9d2c9047812def6d2d2f9cf87b8bcd5deac1b485432a503f62045a1f1324d8a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/login.html.twig"));
+        $__internal_96c93e5e95ddc1171f776b995d303255cd0d7525beaffd73c9c829d61d2c6a19 = $this->env->getExtension("native_profiler");
+        $__internal_96c93e5e95ddc1171f776b995d303255cd0d7525beaffd73c9c829d61d2c6a19->enter($__internal_96c93e5e95ddc1171f776b995d303255cd0d7525beaffd73c9c829d61d2c6a19_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9d2c9047812def6d2d2f9cf87b8bcd5deac1b485432a503f62045a1f1324d8a6->leave($__internal_9d2c9047812def6d2d2f9cf87b8bcd5deac1b485432a503f62045a1f1324d8a6_prof);
+        $__internal_96c93e5e95ddc1171f776b995d303255cd0d7525beaffd73c9c829d61d2c6a19->leave($__internal_96c93e5e95ddc1171f776b995d303255cd0d7525beaffd73c9c829d61d2c6a19_prof);
 
     }
 
     // line 2
-    public function block_body($context, array $blocks = array())
+    public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_5a2e137d6184fbc2c67cf3e1b642c9e03162c88c5e80b34d70f153b20c766720 = $this->env->getExtension("native_profiler");
-        $__internal_5a2e137d6184fbc2c67cf3e1b642c9e03162c88c5e80b34d70f153b20c766720->enter($__internal_5a2e137d6184fbc2c67cf3e1b642c9e03162c88c5e80b34d70f153b20c766720_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4d3cb4640b317d626eac70f990170921f14768cedb767262ebf481197efb9230 = $this->env->getExtension("native_profiler");
+        $__internal_4d3cb4640b317d626eac70f990170921f14768cedb767262ebf481197efb9230->enter($__internal_4d3cb4640b317d626eac70f990170921f14768cedb767262ebf481197efb9230_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 3
+        echo "<link href=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("/asset/css/login.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\">
+";
+        
+        $__internal_4d3cb4640b317d626eac70f990170921f14768cedb767262ebf481197efb9230->leave($__internal_4d3cb4640b317d626eac70f990170921f14768cedb767262ebf481197efb9230_prof);
+
+    }
+
+    // line 5
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_ad1b09ec1bc803f8afc5300c5936606a1fad688c9dfc8b6ac4c204a8e0941edc = $this->env->getExtension("native_profiler");
+        $__internal_ad1b09ec1bc803f8afc5300c5936606a1fad688c9dfc8b6ac4c204a8e0941edc->enter($__internal_ad1b09ec1bc803f8afc5300c5936606a1fad688c9dfc8b6ac4c204a8e0941edc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 6
         echo "
 ";
-        // line 4
+        // line 7
         if ((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error"))) {
-            // line 5
+            // line 8
             echo "    <div>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "messageKey", array()), $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "messageData", array()), "security"), "html", null, true);
             echo "</div>
 ";
         }
-        // line 7
+        // line 10
         echo "
-<form action=\"";
-        // line 8
+<div class=\"container\">
+    <div class=\"row\">
+        <div class=\"col-sm-6 col-md-4 col-md-offset-4\">
+            <h1 class=\"text-center login-title\">Please Sign in</h1>
+            
+                <form class=\"form-signin\" action=\"";
+        // line 16
         echo $this->env->getExtension('routing')->getPath("login");
         echo "\" method=\"post\">
-    <label for=\"username\">Username:</label>
-    <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 10
-        echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
-        echo "\" />
-
-    <label for=\"password\">Password:</label>
-    <input type=\"password\" id=\"password\" name=\"_password\" />
-
-    <button type=\"submit\">login</button>
-</form>
+                <input type=\"text\" class=\"form-control\" placeholder=\"UserName\" id=\"username\" name=\"_username\" required autofocus>
+                <input type=\"password\" id=\"password\" name=\"_password\" class=\"form-control\" placeholder=\"Password\" required>
+                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">
+                    Sign in</button>
+                
+                </form>
+            
+            <a href=\"/register\" class=\"text-center new-account\">Create an account </a>
+        </div>
+    </div>
+</div>
 ";
         
-        $__internal_5a2e137d6184fbc2c67cf3e1b642c9e03162c88c5e80b34d70f153b20c766720->leave($__internal_5a2e137d6184fbc2c67cf3e1b642c9e03162c88c5e80b34d70f153b20c766720_prof);
+        $__internal_ad1b09ec1bc803f8afc5300c5936606a1fad688c9dfc8b6ac4c204a8e0941edc->leave($__internal_ad1b09ec1bc803f8afc5300c5936606a1fad688c9dfc8b6ac4c204a8e0941edc_prof);
 
     }
 
@@ -82,24 +104,35 @@ class __TwigTemplate_07e267ece97e6e100d0ca03545c65bd0c8a94ceb2cab26906772001c44c
 
     public function getDebugInfo()
     {
-        return array (  59 => 10,  54 => 8,  51 => 7,  45 => 5,  43 => 4,  40 => 3,  34 => 2,  11 => 1,);
+        return array (  76 => 16,  68 => 10,  62 => 8,  60 => 7,  57 => 6,  51 => 5,  41 => 3,  35 => 2,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
+/* {% block stylesheets %}*/
+/* <link href="{{asset('/asset/css/login.css')}}" rel="stylesheet">*/
+/* {% endblock %}*/
 /* {% block body %}*/
 /* */
 /* {% if error %}*/
 /*     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>*/
 /* {% endif %}*/
 /* */
-/* <form action="{{ path('login') }}" method="post">*/
-/*     <label for="username">Username:</label>*/
-/*     <input type="text" id="username" name="_username" value="{{ last_username }}" />*/
-/* */
-/*     <label for="password">Password:</label>*/
-/*     <input type="password" id="password" name="_password" />*/
-/* */
-/*     <button type="submit">login</button>*/
-/* </form>*/
+/* <div class="container">*/
+/*     <div class="row">*/
+/*         <div class="col-sm-6 col-md-4 col-md-offset-4">*/
+/*             <h1 class="text-center login-title">Please Sign in</h1>*/
+/*             */
+/*                 <form class="form-signin" action="{{ path('login') }}" method="post">*/
+/*                 <input type="text" class="form-control" placeholder="UserName" id="username" name="_username" required autofocus>*/
+/*                 <input type="password" id="password" name="_password" class="form-control" placeholder="Password" required>*/
+/*                 <button class="btn btn-lg btn-primary btn-block" type="submit">*/
+/*                     Sign in</button>*/
+/*                 */
+/*                 </form>*/
+/*             */
+/*             <a href="/register" class="text-center new-account">Create an account </a>*/
+/*         </div>*/
+/*     </div>*/
+/* </div>*/
 /* {% endblock %}*/
 /* */
