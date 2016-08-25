@@ -11,6 +11,7 @@ use AppBundle\Entity\Venue;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\EventUser;
 use AppBundle\Form\UserType;
+use Doctrine\Common\Collections\Criteria;
 
 
 
@@ -21,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class EventsController extends Controller{
+
 
 	/**
      * @Route("/events/list", name="events_list")
@@ -44,14 +46,20 @@ class EventsController extends Controller{
 	        if($user){
 	        	$userRole = $user -> getUserRole();
 	        }
+	        $regEvents = array();
+	        if($user && $user->getUserRole() == 'ROLE_USER'){
+	        	$regEvents = $this->fetchRegisteredEvents();	
+	        }
 
+	        
 	        #$events = $this->getDoctrine()
 	         #   ->getRepository('AppBundle:Event')
 	         #   ->findAll();
 
 	        return $this->render('events/list.html.twig', array(
 	                'events' => $events,
-	                'role' => $userRole
+	                'role' => $userRole,
+	                'regEvents' => $regEvents
 	            ));
 
     	}
@@ -64,6 +72,33 @@ class EventsController extends Controller{
     	}
         
     }
+    /**
+    *
+	*
+    *	checks if the given venue is available for the requested time period
+	*
+    *	@return boolean
+    */
+
+
+    public function fetchRegisteredEvents(){
+    		$user = $this->getUser();
+
+        	$em = $this->getDoctrine()->getManager();
+        	$eventUserRepo = $em->getRepository('AppBundle:EventUser');
+
+        	$criteria = new Criteria();
+        	$criteria->where($criteria->expr()->eq('user', $user));
+
+        	$regEvents = $eventUserRepo->matching($criteria);
+
+        	$events = array();
+        	foreach ($regEvents as $event) {
+        		$events[] = $event->getEvent()->getId();
+        	}
+        	return $events;
+    }
+
     /**
     *	@param : datetime $start data, datetime $endDate, venue $venue
 	*
