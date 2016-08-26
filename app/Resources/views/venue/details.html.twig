@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<a class = "btn btn-default"href="/venue/list"> Back to List</a>
+<hr>
+
+<div class="row">
+
+          	 <div class="col-md-12">
+
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{asset('asset/venueimages/')~venue.image }}" alt="">
+                    <div class="caption-full">
+                        
+                        <h3>{{venue.name}}</h3>
+                        <h5>Address: {{venue.address}}</h5>
+                        <br>
+                        <p>{{venue.description}}</p>
+                        <br>
+                        <h4>Events Booked: </h4>
+                        <div class="thumbnail">
+                    		<table class="table table-striped">
+									<thead>
+										<th>Event name</th>
+										<th>Start Date</th>
+										<th>End Date</th>
+										<th>Status</th>
+									</thead>
+									<tbody>
+									{% for event in events %}
+										<tr>
+											<td>{{event.name}}</td>
+											<td>{{event.startDate|date('m/d/Y')}}</td>
+											<td>{{event.endDate|date('m/d/Y')}}</td>
+											<td>{{event.status}}</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+							</table>
+	                    
+	                	</div>
+                    </div>
+                    
+                </div>
+             </div>
+</div>   
+
+{% endblock %}

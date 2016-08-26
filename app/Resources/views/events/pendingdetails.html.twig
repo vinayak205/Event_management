@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<a class = "btn btn-default"href="/events/pending"> Back to List</a>
+<hr>
+
+<div class="row">
+
+          	 <div class="col-md-12">
+
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{asset('asset/eventimages/')~event.image }}" alt="">
+                    <div class="caption-full">
+                        
+                        <h3>{{event.name}}</h3>
+                        <h5>Start Time: {{event.startDate|date('Y-m-d H:i')}}</h5>
+                        <h5>End Time: {{event.endDate|date('Y-m-d H:i')}}</h5>
+                        <h5>Host: {{event.host}}</h5>
+                        <h5>Organizer: {{event.organizer.username}}</h5>
+                        <h5>Category: {{event.category}}</h5>
+                        <br>
+                        <p>{{event.description}}</p>
+                        <h3>Venue Details: </h3>
+                        <div class="thumbnail">
+                    		<img class="img-responsive" src="{{asset('asset/venueimages/')~event.venue.image }}" alt="">
+	                    	<div class="caption-full">
+	                        
+	                        	<h3>{{event.venue.name}}</h3>
+	                        	<h5>Address: {{event.venue.address}}</h5>
+	                        	<p>{{event.venue.description}}</p>
+	                        	<br>
+	                        	
+	                        	
+	                    	</div>
+	                    
+	                	</div>
+                    </div>
+                    
+                </div>
+             </div>
+</div>   
+
+{% endblock %}
