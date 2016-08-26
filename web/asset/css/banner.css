@@ -4,7 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-
+.navbar{
+    margin-bottom: 0px;
+}
 .image-bg-fluid-height,
 .image-bg-fixed-height {
     text-align: center;
@@ -15,7 +17,8 @@
 }
 
 .image-bg-fluid-height {
-    background: url('http://lorempixel.com/g/1920/500/') no-repeat center center scroll;
+    background: url('./background.jpg') no-repeat center center scroll;
+    margin-bottom: 0px;
     padding: 100px 0;
 }
 
