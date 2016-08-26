@@ -15,6 +15,7 @@
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
+      <parameter key="SentryBundle">Sentry\SentryBundle\SentryBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -304,6 +305,16 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
+    <parameter key="sentry.dsn">https://ae54fe264deb4a89a2940d7dda02f6d1:6be4d59109f743349a6e394201b52939@app.getsentry.com/94573</parameter>
+    <parameter key="sentry.app_path">null</parameter>
+    <parameter key="sentry.client">Sentry\SentryBundle\SentrySymfonyClient</parameter>
+    <parameter key="sentry.environment">dev</parameter>
+    <parameter key="sentry.exception_listener">Sentry\SentryBundle\EventListener\ExceptionListener</parameter>
+    <parameter key="sentry.skip_capture" type="collection">
+      <parameter>Symfony\Component\HttpKernel\Exception\HttpExceptionInterface</parameter>
+    </parameter>
+    <parameter key="sentry.release">null</parameter>
+    <parameter key="sentry.prefixes" type="collection"/>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -489,7 +500,7 @@
                   <tag name="cache.pool"/>
                   <argument>8dpz8QGnwC</argument>
                   <argument></argument>
-                  <argument>2xfPXuOFzjICWZs8SIkuew</argument>
+                  <argument>5GmK1UfD1AvVVg-mf04pBg</argument>
                   <argument>/Users/vinayakbharti/Desktop/Event Management/event/Event_management/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -502,7 +513,7 @@
                   <tag name="cache.pool"/>
                   <argument>jVG-mLkRaU</argument>
                   <argument></argument>
-                  <argument>2xfPXuOFzjICWZs8SIkuew</argument>
+                  <argument>5GmK1UfD1AvVVg-mf04pBg</argument>
                   <argument>/Users/vinayakbharti/Desktop/Event Management/event/Event_management/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -834,7 +845,7 @@
       <tag name="cache.pool"/>
       <argument>q0naEklD-H</argument>
       <argument></argument>
-      <argument>2xfPXuOFzjICWZs8SIkuew</argument>
+      <argument>5GmK1UfD1AvVVg-mf04pBg</argument>
       <argument>/Users/vinayakbharti/Desktop/Event Management/event/Event_management/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1418,6 +1429,30 @@
         </argument>
         <argument>0</argument>
       </call>
+      <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument>sentry.exception_listener</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>kernel.exception</argument>
+        <argument type="collection">
+          <argument>sentry.exception_listener</argument>
+          <argument>onKernelException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>console.exception</argument>
+        <argument type="collection">
+          <argument>sentry.exception_listener</argument>
+          <argument>onConsoleException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
       <call method="addSubscriberService">
         <argument>response_listener</argument>
         <argument>Symfony\Component\HttpKernel\EventListener\ResponseListener</argument>
@@ -1579,7 +1614,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57beca0be19fe6.57065451</argument>
+            <argument>57c02fa7956906.47294065</argument>
           </service>
         </argument>
       </argument>
@@ -1957,7 +1992,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57beca0be19fe6.57065451</argument>
+            <argument>57c02fa7956906.47294065</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2601,6 +2636,33 @@
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
       <argument type="service" id="security.authorization_checker" on-invalid="null"/>
+    </service>
+    <service id="sentry.client" class="Sentry\SentryBundle\SentrySymfonyClient">
+      <argument>https://ae54fe264deb4a89a2940d7dda02f6d1:6be4d59109f743349a6e394201b52939@app.getsentry.com/94573</argument>
+      <call method="setRelease">
+        <argument>null</argument>
+      </call>
+      <call method="setEnvironment">
+        <argument>dev</argument>
+      </call>
+      <call method="setAppPath">
+        <argument>null</argument>
+      </call>
+      <call method="setPrefixes">
+        <argument type="collection"/>
+      </call>
+      <call method="install"/>
+    </service>
+    <service id="sentry.exception_listener" class="Sentry\SentryBundle\EventListener\ExceptionListener">
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException"/>
+      <tag name="kernel.event_listener" event="console.exception" method="onConsoleException"/>
+      <argument type="service" id="security.token_storage" on-invalid="ignore"/>
+      <argument type="service" id="security.authorization_checker" on-invalid="ignore"/>
+      <argument type="service" id="sentry.client"/>
+      <argument type="collection">
+        <argument>Symfony\Component\HttpKernel\Exception\HttpExceptionInterface</argument>
+      </argument>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>

@@ -185,9 +185,20 @@ class ComposerStaticInit95765934b6178ad0696d3262eb62eb80
         ),
         'S' => 
         array (
+            'Sentry\\SentryBundle\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/sentry/sentry-symfony/src',
+            ),
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
+            ),
+        ),
+        'R' => 
+        array (
+            'Raven_' => 
+            array (
+                0 => __DIR__ . '/..' . '/sentry/sentry/lib',
             ),
         ),
         'P' => 
