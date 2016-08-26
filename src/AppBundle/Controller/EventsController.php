@@ -11,6 +11,7 @@ use AppBundle\Entity\Venue;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\EventUser;
 use AppBundle\Form\UserType;
+use Doctrine\Common\Collections\Criteria;
 
 
 
@@ -19,8 +20,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class EventsController extends Controller{
+
 
 	/**
      * @Route("/events/list", name="events_list")
@@ -44,14 +47,20 @@ class EventsController extends Controller{
 	        if($user){
 	        	$userRole = $user -> getUserRole();
 	        }
+	        $regEvents = array();
+	        if($user && $user->getUserRole() == 'ROLE_USER'){
+	        	$regEvents = $this->fetchRegisteredEvents();	
+	        }
 
+	        
 	        #$events = $this->getDoctrine()
 	         #   ->getRepository('AppBundle:Event')
 	         #   ->findAll();
 
 	        return $this->render('events/list.html.twig', array(
 	                'events' => $events,
-	                'role' => $userRole
+	                'role' => $userRole,
+	                'regEvents' => $regEvents
 	            ));
 
     	}
@@ -64,6 +73,33 @@ class EventsController extends Controller{
     	}
         
     }
+    /**
+    *
+	*
+    *	fetehes the events the logged in user has registered for.
+	*
+    *	@return array of event ids.
+    */
+
+
+    public function fetchRegisteredEvents(){
+    		$user = $this->getUser();
+
+        	$em = $this->getDoctrine()->getManager();
+        	$eventUserRepo = $em->getRepository('AppBundle:EventUser');
+
+        	$criteria = new Criteria();
+        	$criteria->where($criteria->expr()->eq('user', $user));
+
+        	$regEvents = $eventUserRepo->matching($criteria);
+
+        	$events = array();
+        	foreach ($regEvents as $event) {
+        		$events[] = $event->getEvent()->getId();
+        	}
+        	return $events;
+    }
+
     /**
     *	@param : datetime $start data, datetime $endDate, venue $venue
 	*
@@ -119,7 +155,7 @@ class EventsController extends Controller{
 
 	        $venueNames = array();
 	        
-
+	        $user = $this->getUser();
 	        foreach ($venues as $venue) {
 	            $temp = $venue -> getName();
 	            $venueNames["$temp"] = $venue;
@@ -152,6 +188,7 @@ class EventsController extends Controller{
 	                array('attr' => array('class' => 'formcontrol', 'style' => 'margin-bottom:15px')))
 	            ->add('end_date', DateTimeType::class, 
 	                array('attr' => array('class' => 'formcontrol', 'style' => 'margin-bottom:15px')))
+	            ->add('image', FileType::class, array('label' => 'Image for the todo'))
 	            ->getForm();
 	        $form -> handleRequest($request);
 	        if($form -> isSubmitted() && $form -> isValid()){
@@ -164,6 +201,12 @@ class EventsController extends Controller{
 	            $host = $form['host']->getData();
 	            $short_description = $form['short_description']->getData();
 	            $status = "pending";
+	            $file = $event->getImage();
+	            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            	$file->move(
+                	$this->getParameter('event_image_directory'),
+                	$fileName
+            	);
 
 	            if($end_date <= $start_date){
 	                $this->addFlash(
@@ -192,6 +235,8 @@ class EventsController extends Controller{
 	            $event->setHost($host);
 	            $event->setStatus($status);
 	            $event->setShortDescription($short_description);
+	            $event->setImage($fileName);
+	            $event->setOrganizer($user);
 
 	            $em = $this->getDoctrine()->getManager();
 	            $em->persist($event);
@@ -239,7 +284,7 @@ class EventsController extends Controller{
     	catch(\Exception $e){
     		$this->addFlash(
                 'notice',
-                'Error: Details cannot be displayed!'
+                $e->getMessage()
             );
             return $this->redirectToRoute('events_list');
     	}
@@ -315,10 +360,18 @@ class EventsController extends Controller{
 
 	        $em->flush();
 
+	        $eventUser = new EventUser;
+	        $user = $event->getOrganizer();
+	       	$eventUser->setUser($user);
+	       	$eventUser->setEvent($event);
+	       	
+	        $em->persist($eventUser);
+	        $em->flush();
+
 	        $this->addFlash(
 	            'notice',
 	            'Event approved'
-	             );
+	        );
 	        return $this->redirectToRoute('events_pending');
     	}
     	catch(\Exception $e){

@@ -1,6 +1,6 @@
 <?php
 
-/* :events:pending.html.twig */
+/* events/pending.html.twig */
 class __TwigTemplate_2b27c280854e9d6b2e79324541a1abb4b6ea82f1db8964f6419b11f1e8252a1d extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_2b27c280854e9d6b2e79324541a1abb4b6ea82f1db8964f6419b11f1e82
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("base.html.twig", ":events:pending.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "events/pending.html.twig", 1);
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
@@ -21,20 +21,20 @@ class __TwigTemplate_2b27c280854e9d6b2e79324541a1abb4b6ea82f1db8964f6419b11f1e82
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2679d39d0f1a1dfa28b46436a8f87ac7adc7a608f2a1f23790937771cd617591 = $this->env->getExtension("native_profiler");
-        $__internal_2679d39d0f1a1dfa28b46436a8f87ac7adc7a608f2a1f23790937771cd617591->enter($__internal_2679d39d0f1a1dfa28b46436a8f87ac7adc7a608f2a1f23790937771cd617591_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":events:pending.html.twig"));
+        $__internal_5b4e9165950eaa2d4c25bdbe8ffcd5fb658a76588182286b8641d468a5d8327f = $this->env->getExtension("native_profiler");
+        $__internal_5b4e9165950eaa2d4c25bdbe8ffcd5fb658a76588182286b8641d468a5d8327f->enter($__internal_5b4e9165950eaa2d4c25bdbe8ffcd5fb658a76588182286b8641d468a5d8327f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "events/pending.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_2679d39d0f1a1dfa28b46436a8f87ac7adc7a608f2a1f23790937771cd617591->leave($__internal_2679d39d0f1a1dfa28b46436a8f87ac7adc7a608f2a1f23790937771cd617591_prof);
+        $__internal_5b4e9165950eaa2d4c25bdbe8ffcd5fb658a76588182286b8641d468a5d8327f->leave($__internal_5b4e9165950eaa2d4c25bdbe8ffcd5fb658a76588182286b8641d468a5d8327f_prof);
 
     }
 
     // line 2
     public function block_body($context, array $blocks = array())
     {
-        $__internal_8b653343e3e668c845e5d3440b32caeae484995e6c3f063bc19d7b5981a417c4 = $this->env->getExtension("native_profiler");
-        $__internal_8b653343e3e668c845e5d3440b32caeae484995e6c3f063bc19d7b5981a417c4->enter($__internal_8b653343e3e668c845e5d3440b32caeae484995e6c3f063bc19d7b5981a417c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_d07268f55f0de1d2cea308bb264a31de9d18260b81686e8a8e230209d9e93b85 = $this->env->getExtension("native_profiler");
+        $__internal_d07268f55f0de1d2cea308bb264a31de9d18260b81686e8a8e230209d9e93b85->enter($__internal_d07268f55f0de1d2cea308bb264a31de9d18260b81686e8a8e230209d9e93b85_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
         echo "\t<h2 class=\"page-header\">Pending Events</h2>
@@ -70,7 +70,7 @@ class __TwigTemplate_2b27c280854e9d6b2e79324541a1abb4b6ea82f1db8964f6419b11f1e82
 \t\t\t\t\t\t<a href=\"/events/approve/";
             // line 16
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "id", array()), "html", null, true);
-            echo "\" class=\"btn btn-default\">Approve</a>
+            echo "\" class=\"btn btn-primary\">Approve</a>
 \t\t\t\t\t\t<a href=\"/events/reject/";
             // line 17
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "id", array()), "html", null, true);
@@ -89,13 +89,13 @@ class __TwigTemplate_2b27c280854e9d6b2e79324541a1abb4b6ea82f1db8964f6419b11f1e82
 \t</table>
 ";
         
-        $__internal_8b653343e3e668c845e5d3440b32caeae484995e6c3f063bc19d7b5981a417c4->leave($__internal_8b653343e3e668c845e5d3440b32caeae484995e6c3f063bc19d7b5981a417c4_prof);
+        $__internal_d07268f55f0de1d2cea308bb264a31de9d18260b81686e8a8e230209d9e93b85->leave($__internal_d07268f55f0de1d2cea308bb264a31de9d18260b81686e8a8e230209d9e93b85_prof);
 
     }
 
     public function getTemplateName()
     {
-        return ":events:pending.html.twig";
+        return "events/pending.html.twig";
     }
 
     public function isTraitable()
@@ -123,7 +123,7 @@ class __TwigTemplate_2b27c280854e9d6b2e79324541a1abb4b6ea82f1db8964f6419b11f1e82
 /*     					<p class="card-text">Description: {{event.shortDescription}}</p>*/
 /*     					<p class="card-text">Start Date: {{event.startDate|date("m/d/Y")}}</p>*/
 /*     					<a href="/events/pending/details/{{event.id}}" class="btn btn-success">View</a>*/
-/* 						<a href="/events/approve/{{event.id}}" class="btn btn-default">Approve</a>*/
+/* 						<a href="/events/approve/{{event.id}}" class="btn btn-primary">Approve</a>*/
 /* 						<a href="/events/reject/{{event.id}}" class="btn btn-danger">Reject</a>	*/
 /*   					</div>*/
 /* 				</div>*/

@@ -68,11 +68,11 @@
                 {% for flash_message in app.session.flashbag.get('notice') %}
                     <div class="alert alert-success">{{flash_message}}</div>
                 {% endfor %}
-                {% block body %}{% endblock %}
+                
 
             </div>
         </div>
-
+        {% block body %}{% endblock %}
      
     </div><!-- /.container -->
     {% block javascripts %}{% endblock %}

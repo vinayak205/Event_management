@@ -64,10 +64,10 @@ class Event extends \AppBundle\Entity\Event implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'shortDescription', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'startDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'endDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'status', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'category', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'host', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'venue'];
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'shortDescription', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'startDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'endDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'status', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'category', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'host', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'venue', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'image', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'organizer'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'shortDescription', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'startDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'endDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'status', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'category', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'host', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'venue'];
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'name', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'description', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'shortDescription', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'startDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'endDate', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'status', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'category', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'host', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'venue', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'image', '' . "\0" . 'AppBundle\\Entity\\Event' . "\0" . 'organizer'];
     }
 
     /**
@@ -384,6 +384,50 @@ class Event extends \AppBundle\Entity\Event implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHost', []);
 
         return parent::getHost();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImage($image)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage', [$image]);
+
+        return parent::setImage($image);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getImage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage', []);
+
+        return parent::getImage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOrganizer($organizer)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrganizer', [$organizer]);
+
+        return parent::setOrganizer($organizer);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrganizer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrganizer', []);
+
+        return parent::getOrganizer();
     }
 
 }
