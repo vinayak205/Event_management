@@ -2111,5 +2111,121 @@
         ],
         "description": "Symfony PHPUnit Bridge",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "sentry/sentry",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/getsentry/sentry-php.git",
+            "reference": "33fbf98955cdfe34e99fe43ef8bdd874253675dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/33fbf98955cdfe34e99fe43ef8bdd874253675dd",
+            "reference": "33fbf98955cdfe34e99fe43ef8bdd874253675dd",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "monolog/monolog": "*",
+            "php": ">=5.2.4"
+        },
+        "conflict": {
+            "raven/raven": "*"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^1.8.0",
+            "phpunit/phpunit": "^4.6.6"
+        },
+        "time": "2016-07-30 18:28:24",
+        "bin": [
+            "bin/sentry"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Raven_": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "David Cramer",
+                "email": "dcramer@gmail.com"
+            }
+        ],
+        "description": "A PHP client for Sentry (http://getsentry.com)",
+        "homepage": "http://getsentry.com",
+        "keywords": [
+            "log",
+            "logging"
+        ]
+    },
+    {
+        "name": "sentry/sentry-symfony",
+        "version": "0.4.0",
+        "version_normalized": "0.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/getsentry/sentry-symfony.git",
+            "reference": "2873030eedf3a22eaeaee404086507914d057243"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/getsentry/sentry-symfony/zipball/2873030eedf3a22eaeaee404086507914d057243",
+            "reference": "2873030eedf3a22eaeaee404086507914d057243",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "sentry/sentry": ">=0.22.0",
+            "symfony/symfony": ">=2.4.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^1.8.0",
+            "phpunit/phpunit": "^4.6.6"
+        },
+        "time": "2016-07-21 19:25:40",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sentry\\SentryBundle\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David Cramer",
+                "email": "dcramer@gmail.com"
+            }
+        ],
+        "description": "Symfony integration for Sentry (http://getsentry.com)",
+        "homepage": "http://getsentry.com",
+        "keywords": [
+            "errors",
+            "logging",
+            "sentry",
+            "symfony"
+        ]
     }
 ]

@@ -68,3 +68,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+#Sentry Configuration
+sentry:
+    dsn: "https://ae54fe264deb4a89a2940d7dda02f6d1:6be4d59109f743349a6e394201b52939@app.getsentry.com/94573"
