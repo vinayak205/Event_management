@@ -22,20 +22,20 @@ class __TwigTemplate_7c69f9b5a753860035a1d8f887fb36dd2d1673e6af31b4ca6fcc66285f7
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_718c006f1babe2b9692527ee8ad5ef4e15686783100e4ae6e44fda6c86cf5bfe = $this->env->getExtension("native_profiler");
-        $__internal_718c006f1babe2b9692527ee8ad5ef4e15686783100e4ae6e44fda6c86cf5bfe->enter($__internal_718c006f1babe2b9692527ee8ad5ef4e15686783100e4ae6e44fda6c86cf5bfe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "events/list.html.twig"));
+        $__internal_fe5225e21f8c1d5567042711ac145e1f8501fc8ff27d15bb4de5ecf9e1c29f0f = $this->env->getExtension("native_profiler");
+        $__internal_fe5225e21f8c1d5567042711ac145e1f8501fc8ff27d15bb4de5ecf9e1c29f0f->enter($__internal_fe5225e21f8c1d5567042711ac145e1f8501fc8ff27d15bb4de5ecf9e1c29f0f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "events/list.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_718c006f1babe2b9692527ee8ad5ef4e15686783100e4ae6e44fda6c86cf5bfe->leave($__internal_718c006f1babe2b9692527ee8ad5ef4e15686783100e4ae6e44fda6c86cf5bfe_prof);
+        $__internal_fe5225e21f8c1d5567042711ac145e1f8501fc8ff27d15bb4de5ecf9e1c29f0f->leave($__internal_fe5225e21f8c1d5567042711ac145e1f8501fc8ff27d15bb4de5ecf9e1c29f0f_prof);
 
     }
 
     // line 2
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_66baa7882346f5aab356e63599ca0bcea5456919e6bdd95236ec8710543fa35f = $this->env->getExtension("native_profiler");
-        $__internal_66baa7882346f5aab356e63599ca0bcea5456919e6bdd95236ec8710543fa35f->enter($__internal_66baa7882346f5aab356e63599ca0bcea5456919e6bdd95236ec8710543fa35f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_eae919b6c3cc0e88c19a86645c9ee22d0789fc483cc815393a2a0eec1fd3be70 = $this->env->getExtension("native_profiler");
+        $__internal_eae919b6c3cc0e88c19a86645c9ee22d0789fc483cc815393a2a0eec1fd3be70->enter($__internal_eae919b6c3cc0e88c19a86645c9ee22d0789fc483cc815393a2a0eec1fd3be70_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 3
         echo "<link href=\"";
@@ -43,15 +43,15 @@ class __TwigTemplate_7c69f9b5a753860035a1d8f887fb36dd2d1673e6af31b4ca6fcc66285f7
         echo "\" rel=\"stylesheet\">
 ";
         
-        $__internal_66baa7882346f5aab356e63599ca0bcea5456919e6bdd95236ec8710543fa35f->leave($__internal_66baa7882346f5aab356e63599ca0bcea5456919e6bdd95236ec8710543fa35f_prof);
+        $__internal_eae919b6c3cc0e88c19a86645c9ee22d0789fc483cc815393a2a0eec1fd3be70->leave($__internal_eae919b6c3cc0e88c19a86645c9ee22d0789fc483cc815393a2a0eec1fd3be70_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e41b9178ebb93af04ca77142bf644bec4eb4d42cf8a822d31a93c4f18479726f = $this->env->getExtension("native_profiler");
-        $__internal_e41b9178ebb93af04ca77142bf644bec4eb4d42cf8a822d31a93c4f18479726f->enter($__internal_e41b9178ebb93af04ca77142bf644bec4eb4d42cf8a822d31a93c4f18479726f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_1ef274c50c34f203ffe5d4e657762a8d07dbff69ac9146d9b0895babaaf0f504 = $this->env->getExtension("native_profiler");
+        $__internal_1ef274c50c34f203ffe5d4e657762a8d07dbff69ac9146d9b0895babaaf0f504->enter($__internal_1ef274c50c34f203ffe5d4e657762a8d07dbff69ac9146d9b0895babaaf0f504_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "        <h2 class=\"page-header\">Events</h2>
@@ -72,54 +72,85 @@ class __TwigTemplate_7c69f9b5a753860035a1d8f887fb36dd2d1673e6af31b4ca6fcc66285f7
             echo twig_escape_filter($this->env, ($this->env->getExtension('asset')->getAssetUrl("asset/eventimages/") . $this->getAttribute($context["event"], "image", array())), "html", null, true);
             echo "\" />
                         <div class=\"info\">
-                            <h2 class=\"title\">";
-            // line 16
-            echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "name", array()), "html", null, true);
-            echo "</h4>
-                            <p class=\"desc\">";
-            // line 17
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "startDate", array()), "Y-m-d"), "html", null, true);
-            echo "</p>
-                            <br>
+                            
                             ";
-            // line 19
+            // line 17
             if (((isset($context["role"]) ? $context["role"] : $this->getContext($context, "role")) == "ROLE_USER")) {
-                // line 20
-                echo "                                <a href=\"/events/details/";
+                // line 18
+                echo "                                ";
+                if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "id", array()) == $this->getAttribute($this->getAttribute($context["event"], "organizer", array()), "id", array()))) {
+                    // line 19
+                    echo "                                    <h2 class=\"title\">";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "name", array()), "html", null, true);
+                    echo " (Organizer)</h2>
+                                ";
+                } else {
+                    // line 21
+                    echo "                                    <h2 class=\"title\">";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "name", array()), "html", null, true);
+                    echo "</h2>
+                                ";
+                }
+                // line 23
+                echo "                                <p class=\"desc\">";
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "startDate", array()), "Y-m-d"), "html", null, true);
+                echo "</p>
+                                <br>
+                                <a href=\"/events/details/";
+                // line 25
                 echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "id", array()), "html", null, true);
                 echo "\" class=\"btn btn-success\">View</a>
-                            ";
-                // line 21
+                                ";
+                // line 26
                 if (twig_in_filter($this->getAttribute($context["event"], "id", array()), (isset($context["regEvents"]) ? $context["regEvents"] : $this->getContext($context, "regEvents")))) {
-                    // line 22
-                    echo "                                ";
+                    // line 27
+                    echo "                                    ";
                     if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "id", array()) != $this->getAttribute($this->getAttribute($context["event"], "organizer", array()), "id", array()))) {
-                        // line 23
-                        echo "                                    <a href=\"/events/unregister/";
+                        // line 28
+                        echo "                                        <a href=\"/events/unregister/";
                         echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "id", array()), "html", null, true);
                         echo "\" class=\"btn btn-danger\">UnRegister</a>
 
-                                ";
+                                    ";
                     }
-                    // line 26
-                    echo "                            ";
+                    // line 31
+                    echo "                                ";
                 } else {
-                    // line 27
-                    echo "                                <a href=\"/events/register/";
+                    // line 32
+                    echo "                                    <a href=\"/events/register/";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "id", array()), "html", null, true);
                     echo "\" class=\"btn btn-primary\">Register</a>
-                            ";
+                                ";
                 }
-                // line 29
-                echo "                        ";
+                // line 34
+                echo "                            ";
             } elseif (((isset($context["role"]) ? $context["role"] : $this->getContext($context, "role")) == "ROLE_ADMIN")) {
-                // line 30
-                echo "                            <a href=\"/events/details/";
+                // line 35
+                echo "                                <h2 class=\"title\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "name", array()), "html", null, true);
+                echo "</h2>
+                                <p class=\"desc\">";
+                // line 36
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "startDate", array()), "Y-m-d"), "html", null, true);
+                echo "</p>
+                                <br>
+                                <a href=\"/events/details/";
+                // line 38
                 echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "id", array()), "html", null, true);
                 echo "\" class=\"btn btn-success\">View</a>
-                        ";
+                            ";
+            } else {
+                // line 40
+                echo "                                <h2 class=\"title\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "name", array()), "html", null, true);
+                echo "</h2>
+                                <p class=\"desc\">";
+                // line 41
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "startDate", array()), "Y-m-d"), "html", null, true);
+                echo "</p>
+                            ";
             }
-            // line 32
+            // line 43
             echo "                        </div>
                         
                 </li>
@@ -128,11 +159,11 @@ class __TwigTemplate_7c69f9b5a753860035a1d8f887fb36dd2d1673e6af31b4ca6fcc66285f7
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 36
+        // line 47
         echo "\t\t\t
 ";
         
-        $__internal_e41b9178ebb93af04ca77142bf644bec4eb4d42cf8a822d31a93c4f18479726f->leave($__internal_e41b9178ebb93af04ca77142bf644bec4eb4d42cf8a822d31a93c4f18479726f_prof);
+        $__internal_1ef274c50c34f203ffe5d4e657762a8d07dbff69ac9146d9b0895babaaf0f504->leave($__internal_1ef274c50c34f203ffe5d4e657762a8d07dbff69ac9146d9b0895babaaf0f504_prof);
 
     }
 
@@ -148,7 +179,7 @@ class __TwigTemplate_7c69f9b5a753860035a1d8f887fb36dd2d1673e6af31b4ca6fcc66285f7
 
     public function getDebugInfo()
     {
-        return array (  132 => 36,  123 => 32,  117 => 30,  114 => 29,  108 => 27,  105 => 26,  98 => 23,  95 => 22,  93 => 21,  88 => 20,  86 => 19,  81 => 17,  77 => 16,  72 => 14,  68 => 12,  64 => 11,  57 => 6,  51 => 5,  41 => 3,  35 => 2,  11 => 1,);
+        return array (  163 => 47,  154 => 43,  149 => 41,  144 => 40,  139 => 38,  134 => 36,  129 => 35,  126 => 34,  120 => 32,  117 => 31,  110 => 28,  107 => 27,  105 => 26,  101 => 25,  95 => 23,  89 => 21,  83 => 19,  80 => 18,  78 => 17,  72 => 14,  68 => 12,  64 => 11,  57 => 6,  51 => 5,  41 => 3,  35 => 2,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -166,22 +197,33 @@ class __TwigTemplate_7c69f9b5a753860035a1d8f887fb36dd2d1673e6af31b4ca6fcc66285f7
 /*                         */
 /*                         <img alt="Independence Day" src="{{asset('asset/eventimages/')~event.image }}" />*/
 /*                         <div class="info">*/
-/*                             <h2 class="title">{{event.name}}</h4>*/
-/*                             <p class="desc">{{event.startDate|date('Y-m-d')}}</p>*/
-/*                             <br>*/
+/*                             */
 /*                             {% if role == 'ROLE_USER' %}*/
-/*                                 <a href="/events/details/{{event.id}}" class="btn btn-success">View</a>*/
-/*                             {% if event.id in regEvents %}*/
-/*                                 {% if app.user.id != event.organizer.id %}*/
-/*                                     <a href="/events/unregister/{{event.id}}" class="btn btn-danger">UnRegister</a>*/
-/* */
+/*                                 {% if app.user.id == event.organizer.id %}*/
+/*                                     <h2 class="title">{{event.name}} (Organizer)</h2>*/
+/*                                 {% else %}*/
+/*                                     <h2 class="title">{{event.name}}</h2>*/
 /*                                 {% endif %}*/
+/*                                 <p class="desc">{{event.startDate|date('Y-m-d')}}</p>*/
+/*                                 <br>*/
+/*                                 <a href="/events/details/{{event.id}}" class="btn btn-success">View</a>*/
+/*                                 {% if event.id in regEvents %}*/
+/*                                     {% if app.user.id != event.organizer.id %}*/
+/*                                         <a href="/events/unregister/{{event.id}}" class="btn btn-danger">UnRegister</a>*/
+/* */
+/*                                     {% endif %}*/
+/*                                 {% else %}*/
+/*                                     <a href="/events/register/{{event.id}}" class="btn btn-primary">Register</a>*/
+/*                                 {% endif %}*/
+/*                             {% elseif role == 'ROLE_ADMIN' %}*/
+/*                                 <h2 class="title">{{event.name}}</h2>*/
+/*                                 <p class="desc">{{event.startDate|date('Y-m-d')}}</p>*/
+/*                                 <br>*/
+/*                                 <a href="/events/details/{{event.id}}" class="btn btn-success">View</a>*/
 /*                             {% else %}*/
-/*                                 <a href="/events/register/{{event.id}}" class="btn btn-primary">Register</a>*/
+/*                                 <h2 class="title">{{event.name}}</h2>*/
+/*                                 <p class="desc">{{event.startDate|date('Y-m-d')}}</p>*/
 /*                             {% endif %}*/
-/*                         {% elseif role == 'ROLE_ADMIN' %}*/
-/*                             <a href="/events/details/{{event.id}}" class="btn btn-success">View</a>*/
-/*                         {% endif %}*/
 /*                         </div>*/
 /*                         */
 /*                 </li>*/
