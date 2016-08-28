@@ -1,0 +1,11 @@
+<?php
+
+define('PHPUNIT_COMPOSER_INSTALL', __DIR__.'/vendor/autoload.php');
+
+$loader = require PHPUNIT_COMPOSER_INSTALL;
+
+if (getenv('SYMFONY_PHPUNIT_OVERLOAD') && file_exists(__DIR__.'/../../src/Symfony/Bridge/PhpUnit')) {
+    $loader->addPsr4('Symfony\\Bridge\\PhpUnit\\', array('src/Symfony/Bridge/PhpUnit'), true);
+}
+unset($loader);
+Symfony\Bridge\PhpUnit\TextUI\Command::main();
