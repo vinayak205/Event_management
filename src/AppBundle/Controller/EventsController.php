@@ -165,8 +165,10 @@ class EventsController extends Controller{
 	        $categoryArray = array(
 	        	'Music' => 'Music',
 	        	'Sports' => 'Sports',
-	        	'Meeting' => 'Meeting',
-	        	'class' => 'class'
+	        	'Conference' => 'Conference',
+	        	'Exhibition' => 'Exhibition',
+	        	'Classes' => 'Classes',
+	        	'Screening' => 'Screening'
 
 	        	);
 
