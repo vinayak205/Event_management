@@ -13,6 +13,9 @@ class UsersController extends Controller{
 
 	/**
      * @Route("/users/regevents", name="users_registered_events")
+     *
+     * @return renders registeredEvents page showing the events logged in user has registered
+     * for.
      */
     public function listRegisteredEventsAction()
     {

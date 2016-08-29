@@ -271,6 +271,8 @@ class EventsController extends Controller{
 
     /**
     * @Route("events/details/{id}", name="events_details")
+    * @param event of id integer $id
+    * @return renders the page displaying details of the event.
     */
 
     public function detailsAction($id){
@@ -307,6 +309,8 @@ class EventsController extends Controller{
 
     /**
     * @Route("events/pending/details/{id}", name="events__pending_details")
+    * @param id of event integer $id
+    * @return renders the page displaying the details of the pending selected event.
     */
 
     public function pendingDetailsAction($id){
