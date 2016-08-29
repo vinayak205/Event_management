@@ -280,8 +280,20 @@ class EventsController extends Controller{
 	            ->getRepository('AppBundle:Event')
 	            ->find($id);
 
+	        $em = $this->getDoctrine()
+	            ->getRepository('AppBundle:EventUser');
+
+	        $criteria = new \Doctrine\Common\Collections\Criteria();
+	        $criteria->where($criteria->expr()->eq('event', $event));
+
+	        $regUsers = $em->matching($criteria);
+
+	        $noOfUsers = sizeof($regUsers);
+
 	        return $this->render('events/details.html.twig', array(
-	                'event' => $event));
+	                'event' => $event,
+	                'noOfUsers' => $noOfUsers
+	                ));
     	}
     	catch(\Exception $e){
     		$this->addFlash(
